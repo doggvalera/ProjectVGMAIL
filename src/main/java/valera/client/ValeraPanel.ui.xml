@@ -1,0 +1,77 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<!-- The declarative design of the ExamplePanle user interface -->
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+<ui:with type="valera.client.ValeraPanel.Resources" field="resources" />
+
+<ui:style>
+.button {
+	width: 100%;
+}
+.exampleArea {
+	border-left: 1px solid #333333;
+	padding: 10px;
+}
+.title {
+	font-family: Verdana, sans-serif;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+	padding: 5px 0;
+	background-color: #323B38;
+}
+.navPanel {
+	background: #EEEEEE;
+}
+.divider {
+	height: 10px;
+	background: #999999;
+}
+.website {
+	background-color: #DF1B1B;
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	text-align: center;
+	padding: 10px 0;
+}
+
+.logo {
+	background-color: #ffffff;
+	height: 100px;
+	weight: 100px;
+}
+</ui:style>
+
+<g:DockLayoutPanel unit="PX">
+	<g:west size="180">
+		<g:ScrollPanel>
+			<g:FlowPanel addStyleNames="{style.navPanel}">
+				<g:HTMLPanel styleName="{style.logo}">
+                    <a href="http://127.0.0.1:8888/ValeraGmailMain.html?gwt.codesvr=127.0.0.1:9997">
+                    <!--<g:Image resource="{resources.logo}" />-->
+                    Logo
+                    </a>
+                </g:HTMLPanel>
+				<g:Label addStyleNames="{style.title}">Examples</g:Label>
+				<g:HTML styleName="{style.divider}" />
+				<g:Button addStyleNames="{style.button}" ui:field="introPanel">Main</g:Button>
+				
+				<g:Button addStyleNames="{style.button}" ui:field="sentmail">Sent Mail</g:Button>				
+				<g:Button addStyleNames="{style.button}" ui:field="extend">Entered Mail</g:Button>
+				<g:Button addStyleNames="{style.button}" ui:field="composite">Notes</g:Button>
+				<g:Button addStyleNames="{style.button}" ui:field="newmail">New Mail</g:Button>
+ 				
+			
+			</g:FlowPanel>
+		</g:ScrollPanel>
+	</g:west>
+	<g:center>
+		<g:SimplePanel ui:field="exampleArea"  addStyleNames="{style.exampleArea}"/>
+	</g:center>
+</g:DockLayoutPanel>
+
+</ui:UiBinder>

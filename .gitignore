@@ -1,0 +1,8 @@
+.idea/
+gwt-unitCache/
+target/
+test-clases/
+
+*.iml
+*.class
+.DS_Store

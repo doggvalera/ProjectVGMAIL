@@ -1,0 +1,46 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.important {
+			font-weight: bold;
+			text-align: center;
+ 		
+ 			
+		}
+		.navPanel1{
+
+width: 50%;
+  height: 50%;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+		}
+	
+.divider {
+	height: 10px;
+	background: #999999;
+}
+
+	</ui:style>
+	  <g:VerticalPanel addStyleNames="{style.navPanel1}">
+	<g:HTMLPanel>
+	    
+	
+		Hello,
+		<g:Button styleName="{style.important}" ui:field="button">login</g:Button>
+		Vasa,<br></br>
+		<g:Button styleName="{style.important}" ui:field="loginEnter">Login</g:Button>
+
+		<g:TextBox styleName="{style.important}" ui:field="loginE"></g:TextBox>
+		
+		<g:PasswordTextBox styleName="{style.important}" ui:field="passbox"></g:PasswordTextBox>
+		
+	
+			<g:Button styleName ="{style.important}" ui:field="register"></g:Button>
+		
+		 
+	</g:HTMLPanel>
+	</g:VerticalPanel>
+</ui:UiBinder> 

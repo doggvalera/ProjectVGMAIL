@@ -1,0 +1,41 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+
+	.panel {
+            background-color: ivory;
+        }
+	</ui:style>
+	<g:HTMLPanel>
+		
+		<g:VerticalPanel styleName="{style.panel}" ui:field="vPanelReg">
+		    		<g:Label styleName = "{style.important}" ui:field="loginLabel">Login </g:Label>
+		    	<g:TextBox styleName="{style.important}" ui:field="name"></g:TextBox>
+		    	
+		    
+			
+		    			<g:Label styleName = "{style.important}" ui:field="nameLabel">Name</g:Label>
+		<g:TextBox styleName="{style.important}" ui:field="login"></g:TextBox>
+		
+		
+			<g:Label styleName = "{style.important}" ui:field="surNameLabel">Surname</g:Label>
+		<g:TextBox styleName="{style.important}" ui:field="surname"></g:TextBox>
+		
+		<g:Label styleName = "{style.important}" ui:field="passwordLabel">Password</g:Label>
+		
+		
+		<g:PasswordTextBox styleName="{style.important}" ui:field="password"> </g:PasswordTextBox>
+		
+				<g:Label styleName = "{style.important}" ui:field="passwordLabelRepeat">Password repeat</g:Label>
+		<g:PasswordTextBox styleName="{style.important}" ui:field="passwordRepeat"> </g:PasswordTextBox>
+		<g:Button styleName ="{style.important}" ui:field="registerNew">Registration</g:Button>
+		
+	
+		
+		</g:VerticalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 
