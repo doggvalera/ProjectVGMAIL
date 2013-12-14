@@ -23,10 +23,19 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
 	//	InlineLabel theQuestion;
     @UiField
     public Button sendMail;
+    @UiField
+    public TextBox nameMail;
+
+    @UiField
+    public TextBox themName;
+    //@UiField
+    //public VerticalPanel panelMail;
+    @UiField
+    public RichTextArea sendMailBox;
 		TextBox theAnswer;
-		FlowPanel panel;
+		//FlowPanel panel;
 		RichTextArea mail;
-		TextBox nameMail;
+
 		TextBox theme;
 		AbsolutePanel absolutePanel;
 		VerticalPanel vPanel;
@@ -34,11 +43,11 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
 
 		
 		public NewMail(String question) {
-			panel = new FlowPanel();
-			theme = new TextBox();
-			nameMail = new TextBox();
-			mail = new RichTextArea();
-			absolutePanel = new AbsolutePanel();
+//			panel = new FlowPanel();
+//			theme = new TextBox();
+//		//	nameMail = new TextBox();
+//			mail = new RichTextArea();
+//			absolutePanel = new AbsolutePanel();
 			buildDisplay();
 
 			initWidget(uiBinder.createAndBindUi(this));
@@ -48,13 +57,13 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
 		}
 
 		private void buildDisplay() {
-			panel.clear();
-				panel.add(nameMail);
-				panel.add(theme);
-				panel.add(mail);
-				absolutePanel.add(mail);
-				absolutePanel.add(nameMail);}
+		//	panel.clear();
 
+//				panel.add(theme);
+//				panel.add(mail);
+//				absolutePanel.add(mail);
+//				absolutePanel.add(nameMail);}
+        }
 
 		public HandlerRegistration addMouseOverHandler(MouseOverHandler handler) {
 			return addDomHandler(handler, MouseOverEvent.getType());
