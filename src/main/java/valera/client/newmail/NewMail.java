@@ -1,27 +1,28 @@
 package valera.client.newmail;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.i18n.client.HasDirection;
 import com.google.gwt.i18n.client.HasDirection.Direction;
-import com.google.gwt.user.client.ui.AbsolutePanel;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HasText;
-import com.google.gwt.user.client.ui.InlineLabel;
-import com.google.gwt.user.client.ui.RichTextArea;
-import com.google.gwt.user.client.ui.SplitLayoutPanel;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.*;
 
 public class NewMail extends Composite 	/* implements HasText, HasDirection  */ {
 
+    private static NewMailUiBinder uiBinder = GWT
+            .create(NewMailUiBinder.class);
 
+    interface NewMailUiBinder extends UiBinder<Widget, NewMail> {
+    }
 
 		// The UI elements we will manipulate
 	//	InlineLabel theQuestion;
+    @UiField
+    public Button sendMail;
 		TextBox theAnswer;
 		FlowPanel panel;
 		RichTextArea mail;
@@ -40,7 +41,7 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
 			absolutePanel = new AbsolutePanel();
 			buildDisplay();
 
-			initWidget(absolutePanel);
+			initWidget(uiBinder.createAndBindUi(this));
 
 			this.getElement().getStyle()
 					.setProperty("border", "solid lightblue 2px");
