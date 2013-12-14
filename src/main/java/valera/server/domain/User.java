@@ -19,6 +19,8 @@ public class User {
 //    @Transient
     private String password;
 
+    public User() {}
+
     public User(UserRegistration userRegistration) {
         login = userRegistration.getLogin();
         name = userRegistration.getName();

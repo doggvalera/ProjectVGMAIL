@@ -6,11 +6,15 @@ import valera.server.domain.UserRepository;
 import valera.shared.ValeraService;
 import valera.shared.model.UserRegistration;
 
+import java.util.logging.Logger;
+
 public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraService {
     UserRepository userRepositry = new UserRepository();
+    private Logger logger = Logger.getLogger(this.getClass().getName());
 
     @Override
     public void register(UserRegistration userRegistration) {
+        logger.info("Test");
         User user = new User(userRegistration);
         userRepositry.save(user);
     }
