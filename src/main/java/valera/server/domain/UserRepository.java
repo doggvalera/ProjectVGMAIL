@@ -1,7 +1,10 @@
 package valera.server.domain;
 
+import valera.shared.model.UserRegistration;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import java.util.List;
 
 public class UserRepository {
     
@@ -19,4 +22,13 @@ public class UserRepository {
        // em.merge(user);
 
     }
+    public boolean loginExis(User user){
+        String loginfrombd = user.getLogin();
+        List<String> login = em.createQuery("SELECT u.login FROM User u where :loginfrombd=u.login ", String.class)
+               .setParameter("loginfrombd", loginfrombd)
+                            .getResultList();
+
+        return login != null && !login.isEmpty();
+    }
+
 }

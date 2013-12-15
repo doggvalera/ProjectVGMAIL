@@ -18,6 +18,8 @@ import valera.shared.ValeraService;
 import valera.shared.ValeraServiceAsync;
 import valera.shared.model.UserRegistration;
 
+import javax.inject.Inject;
+
 public class RegestrationBox extends DialogBox implements HasText {
 	private ValeraServiceAsync service;
 	private static RegestrationBoxUiBinder uiBinder = GWT
@@ -76,11 +78,16 @@ public class RegestrationBox extends DialogBox implements HasText {
 //						}
 //					});
 //			name.setText("Work");
-            UserRegistration reg = new UserRegistration(name1,login1,surname1,password1);
-            service.register(reg,new BaseCallback<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
 
+            UserRegistration reg = new UserRegistration(name1,login1,surname1,password1);
+         //   if(loginService.ifExist(reg)){
+          //      login.setText("User exist");
+
+//            }
+            service.register(reg,new BaseCallback<Boolean>() {
+                @Override
+                public void onSuccess(Boolean userExist) {
+                    // TODO: need to show if user exist.
                 }
             });
 		}

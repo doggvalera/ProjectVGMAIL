@@ -8,5 +8,5 @@ import valera.shared.model.UserRegistration;
 public interface ValeraService extends RemoteService { 
 
 	UserRegistration getUserRegistration(String login, String name, String surname, String password);
-     void register(UserRegistration userRegistration);
+     boolean register(UserRegistration userRegistration);
 }

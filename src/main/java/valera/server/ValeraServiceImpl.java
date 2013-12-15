@@ -13,10 +13,14 @@ public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraSer
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     @Override
-    public void register(UserRegistration userRegistration) {
+    public boolean register(UserRegistration userRegistration) {
         logger.info("Test");
+
         User user = new User(userRegistration);
-        userRepositry.save(user);
+        boolean canRegistr=!userRepositry.loginExis(user);
+        if(canRegistr==true){
+        userRepositry.save(user);}
+        return false;
     }
 
     @Override
