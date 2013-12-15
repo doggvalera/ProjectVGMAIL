@@ -31,4 +31,14 @@ public class UserRepository {
         return login != null && !login.isEmpty();
     }
 
+    public boolean checkLogin(User user){
+        String login = user.getLogin();
+      //  if(login.matches("^([a-zA-Z0-9_.\\-+])+@(([a-zA-Z0-9\\-])+\\.)+[a-zA-Z0-9]{2,4}$")){
+        if(login.matches("^[a-zA-Z0-9]+$")){
+            return true;
+        }
+        else return false;
+
+    }
+
 }

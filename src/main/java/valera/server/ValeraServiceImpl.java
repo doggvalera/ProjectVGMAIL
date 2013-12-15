@@ -17,9 +17,28 @@ public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraSer
         logger.info("Test");
 
         User user = new User(userRegistration);
-        boolean canRegistr=!userRepositry.loginExis(user);
+//        boolean canRegistr = !userRepositry.loginExis(user);
+//        if (canRegistr == true) {
+//            if (userRepositry.checkLogin(user) != true) {
+//                userRepositry.save(user);
+//            }
+//        }
+//        return false;
+        boolean canRegistr = true;
+        if(userRepositry.loginExis(user)==true){
+            canRegistr=false;
+            System.out.println("userExists");
+
+        }
+        if(userRepositry.checkLogin(user)!=true){
+            canRegistr=false;
+            System.out.println("wrong login");
+        }
         if(canRegistr==true){
-        userRepositry.save(user);}
+            userRepositry.save(user);
+            return true;
+        }
+        else
         return false;
     }
 
