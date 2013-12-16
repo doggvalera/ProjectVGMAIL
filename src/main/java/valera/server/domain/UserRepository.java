@@ -23,11 +23,13 @@ public class UserRepository {
 
     }
 
-    public boolean loginEnterCheck(String loginfrombd){
-             List<String> logins = em.createQuery("SELECT u.login FROM User u where :loginfrombd=u.login ", String.class)
+    public boolean loginEnterCheck(String loginfrombd, String password){
+             List<String> logins = em.createQuery("SELECT u.login FROM User u where :loginfrombd=u.login AND :password=u.password", String.class)
                 .setParameter("loginfrombd", loginfrombd)
+                .setParameter("password", password)
                 .getResultList();
         System.out.println(loginfrombd);
+
         return logins != null && !logins.isEmpty();
 
 

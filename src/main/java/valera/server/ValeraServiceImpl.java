@@ -42,8 +42,8 @@ public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraSer
     }
 
     @Override
-    public boolean loginEnter(String login) {
-        if (userRepositry.loginEnterCheck(login) == true) {
+    public boolean loginEnter(String login, String password) {
+        if (userRepositry.loginEnterCheck(login, password) == true) {
             return true;
         } else return false;
     }

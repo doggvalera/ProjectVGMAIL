@@ -121,8 +121,9 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
 
 		public void onClick(ClickEvent event) {
         String login = loginE.getText();
+            String password = passbox.getText();
 
-            service.loginEnter(login, new BaseCallback<Boolean>() {
+            service.loginEnter(login,password,new BaseCallback<Boolean>() {
                 @Override
                 public void onSuccess(Boolean userEnter) {
                 if ( userEnter==true) {  FlowControl.go(ValeraGmailMain.valeraPanel);} else System.out.println("user not created");
