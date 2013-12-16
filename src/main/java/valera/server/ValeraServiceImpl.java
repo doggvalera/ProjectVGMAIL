@@ -65,6 +65,18 @@ public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraSer
     }
 
     @Override
+    public boolean isAutorized() {
+        HttpServletRequest request = getThreadLocalRequest();
+        HttpSession session = request.getSession(true);
+        if (session.getAttribute("user")!=null){
+            return true;
+
+        }
+        else
+        return false;
+    }
+
+    @Override
     public UserRegistration getUserRegistration(String login, String name, String surname, String password) {
 
         User u = userRepositry.loadById(1);

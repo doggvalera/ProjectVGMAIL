@@ -11,5 +11,6 @@ public interface ValeraService extends RemoteService {
      boolean register(UserRegistration userRegistration);
     boolean loginEnter(String login, String password);
     public void autorize(String login);
+    public boolean isAutorized();
 
 }
