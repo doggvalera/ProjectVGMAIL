@@ -6,6 +6,9 @@ import valera.server.domain.UserRepository;
 import valera.shared.ValeraService;
 import valera.shared.model.UserRegistration;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.logging.Logger;
 
 public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraService {
@@ -41,11 +44,24 @@ public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraSer
             return false;
     }
 
+
+
+
     @Override
     public boolean loginEnter(String login, String password) {
         if (userRepositry.loginEnterCheck(login, password) == true) {
+
             return true;
         } else return false;
+    }
+
+
+    @Override
+    public void autorize(String login){
+        User user = userRepositry.getUserByLogin(login);
+        HttpServletRequest request = getThreadLocalRequest();
+        HttpSession session = request.getSession(true);
+        session.setAttribute("user",user);
     }
 
     @Override

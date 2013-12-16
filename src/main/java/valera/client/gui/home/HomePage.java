@@ -120,13 +120,32 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
 	private class LoginEnterClickHandler implements ClickHandler {
 
 		public void onClick(ClickEvent event) {
-        String login = loginE.getText();
+       final String login = loginE.getText();
             String password = passbox.getText();
+
+
+
+//            service.loginEnter(login,password,new BaseCallback<Boolean>() {
+//                @Override
+//                public void onSuccess(Boolean userEnter) {
+//                    if ( userEnter==true) {  FlowControl.go(ValeraGmailMain.valeraPanel);} else System.out.println("user not created");
+//
+//                }
+//            });
+
+
 
             service.loginEnter(login,password,new BaseCallback<Boolean>() {
                 @Override
-                public void onSuccess(Boolean userEnter) {
-                if ( userEnter==true) {  FlowControl.go(ValeraGmailMain.valeraPanel);} else System.out.println("user not created");
+                public void onSuccess(Boolean userEnter){
+                if ( userEnter==true) { service.autorize(login,new BaseCallback<Void>(){
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        System.out.println(login);
+                    }
+                });
+                    FlowControl.go(ValeraGmailMain.valeraPanel);} else System.out.println("user not created");
+
                 }
             });
 

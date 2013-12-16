@@ -23,6 +23,8 @@ public class UserRepository {
 
     }
 
+
+
     public boolean loginEnterCheck(String loginfrombd, String password){
              List<String> logins = em.createQuery("SELECT u.login FROM User u where :loginfrombd=u.login AND :password=u.password", String.class)
                 .setParameter("loginfrombd", loginfrombd)
@@ -34,6 +36,16 @@ public class UserRepository {
 
 
     }
+    public User getUserByLogin(String Login){
+
+        List<User> user = em.createQuery("FROM User u where :login=u.login",User.class)
+                .setParameter("login",Login)
+                .getResultList();
+        return user.get(0);
+
+    }
+
+
     public boolean loginExis(User user){
         String loginfrombd = user.getLogin();
         List<String> login = em.createQuery("SELECT u.login FROM User u where :loginfrombd=u.login ", String.class)
