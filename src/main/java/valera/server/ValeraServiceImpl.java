@@ -25,21 +25,27 @@ public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraSer
 //        }
 //        return false;
         boolean canRegistr = true;
-        if(userRepositry.loginExis(user)==true){
-            canRegistr=false;
+        if (userRepositry.loginExis(user) == true) {
+            canRegistr = false;
             System.out.println("userExists");
 
         }
-        if(userRepositry.checkLogin(user)!=true){
-            canRegistr=false;
+        if (userRepositry.checkLogin(user) != true) {
+            canRegistr = false;
             System.out.println("wrong login");
         }
-        if(canRegistr==true){
+        if (canRegistr == true) {
             userRepositry.save(user);
             return true;
-        }
-        else
-        return false;
+        } else
+            return false;
+    }
+
+    @Override
+    public boolean loginEnter(String login) {
+        if (userRepositry.loginEnterCheck(login) == true) {
+            return true;
+        } else return false;
     }
 
     @Override

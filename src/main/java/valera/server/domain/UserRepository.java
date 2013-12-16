@@ -22,6 +22,16 @@ public class UserRepository {
        // em.merge(user);
 
     }
+
+    public boolean loginEnterCheck(String loginfrombd){
+             List<String> logins = em.createQuery("SELECT u.login FROM User u where :loginfrombd=u.login ", String.class)
+                .setParameter("loginfrombd", loginfrombd)
+                .getResultList();
+        System.out.println(loginfrombd);
+        return logins != null && !logins.isEmpty();
+
+
+    }
     public boolean loginExis(User user){
         String loginfrombd = user.getLogin();
         List<String> login = em.createQuery("SELECT u.login FROM User u where :loginfrombd=u.login ", String.class)
