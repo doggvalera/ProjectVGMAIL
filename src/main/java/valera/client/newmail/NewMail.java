@@ -1,6 +1,8 @@
 package valera.client.newmail;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -10,9 +12,13 @@ import com.google.gwt.i18n.client.HasDirection.Direction;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
+import valera.client.BaseCallback;
+import valera.shared.ValeraService;
+import valera.shared.ValeraServiceAsync;
+import valera.shared.model.CreateMail;
 
 public class NewMail extends Composite 	/* implements HasText, HasDirection  */ {
-
+    private ValeraServiceAsync service;
     private static NewMailUiBinder uiBinder = GWT
             .create(NewMailUiBinder.class);
 
@@ -36,13 +42,17 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
 		//FlowPanel panel;
 		RichTextArea mail;
 
-		TextBox theme;
-		AbsolutePanel absolutePanel;
-		VerticalPanel vPanel;
+    TextBox theme;
+    AbsolutePanel absolutePanel;
+    VerticalPanel vPanel;
+
 		protected Direction dir = Direction.DEFAULT;
+
+
 
 		
 		public NewMail(String question) {
+            service = GWT.create(ValeraService.class);
 //			panel = new FlowPanel();
 //			theme = new TextBox();
 //		//	nameMail = new TextBox();
@@ -50,20 +60,39 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
 //			absolutePanel = new AbsolutePanel();
 			buildDisplay();
 
-			initWidget(uiBinder.createAndBindUi(this));
 
-			this.getElement().getStyle()
-					.setProperty("border", "solid lightblue 2px");
-		}
+
+            initWidget(uiBinder.createAndBindUi(this));
+            this.getElement().getStyle()
+                    .setProperty("border", "solid lightblue 2px");
+            sendMail.addClickHandler(new sendMailHandler());
+        }
 
 		private void buildDisplay() {
 		//	panel.clear();
 
-//				panel.add(theme);
-//				panel.add(mail);
-//				absolutePanel.add(mail);
-//				absolutePanel.add(nameMail);}
+
         }
+
+    private class sendMailHandler implements ClickHandler {
+
+        public void onClick(ClickEvent event) {
+            String sendmail = "v"; //sendMail.getText();
+            String namemail = nameMail.getText();
+            String themname =themName.getText();
+            String sendmailbox = sendMailBox.getText();
+
+            CreateMail crtml = new CreateMail(sendmail, namemail, themname,sendmailbox);
+            service.sendMail(crtml,new BaseCallback<Boolean>(){
+
+                @Override
+                public void onSuccess(Boolean aBoolean) {
+                    System.out.println("all okey");
+                }
+            });
+
+        }
+    }
 
 		public HandlerRegistration addMouseOverHandler(MouseOverHandler handler) {
 			return addDomHandler(handler, MouseOverEvent.getType());

@@ -2,6 +2,7 @@ package valera.shared;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import valera.shared.model.CreateMail;
 import valera.shared.model.UserRegistration;
 
 @RemoteServiceRelativePath("valeraservice")
@@ -12,5 +13,6 @@ public interface ValeraService extends RemoteService {
     boolean loginEnter(String login, String password);
     public void autorize(String login);
     public boolean isAutorized();
+    public boolean sendMail(CreateMail mail);
 
 }

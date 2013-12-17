@@ -1,9 +1,12 @@
 package valera.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import valera.server.domain.MailRepository;
+import valera.server.domain.Mails;
 import valera.server.domain.User;
 import valera.server.domain.UserRepository;
 import valera.shared.ValeraService;
+import valera.shared.model.CreateMail;
 import valera.shared.model.UserRegistration;
 
 import javax.servlet.http.HttpServlet;
@@ -13,7 +16,9 @@ import java.util.logging.Logger;
 
 public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraService {
     UserRepository userRepositry = new UserRepository();
+    MailRepository mailRepository = new MailRepository();
     private Logger logger = Logger.getLogger(this.getClass().getName());
+
 
     @Override
     public boolean register(UserRegistration userRegistration) {
@@ -75,6 +80,19 @@ public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraSer
         else
         return false;
     }
+
+
+    @Override
+    public boolean sendMail(CreateMail mail){
+        Mails mails = new Mails(mail);
+       if (mail.getLoginTo()!=null){
+
+         mailRepository.save(mails);
+           return true;
+
+       } else return false;
+    }
+
 
     @Override
     public UserRegistration getUserRegistration(String login, String name, String surname, String password) {
