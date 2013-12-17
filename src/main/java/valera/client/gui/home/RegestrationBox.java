@@ -88,6 +88,10 @@ public class RegestrationBox extends DialogBox implements HasText {
                 @Override
                 public void onSuccess(Boolean userExist) {
                     // TODO: need to show if user exist.
+                   name.setText("");
+                    login.setText("");
+                    surname.setText("");
+                    password.setText("");
                 }
             });
 		}

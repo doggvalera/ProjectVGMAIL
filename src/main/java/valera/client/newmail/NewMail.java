@@ -13,6 +13,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
 import valera.client.BaseCallback;
+import valera.server.domain.User;
 import valera.shared.ValeraService;
 import valera.shared.ValeraServiceAsync;
 import valera.shared.model.CreateMail;
@@ -45,7 +46,7 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
     TextBox theme;
     AbsolutePanel absolutePanel;
     VerticalPanel vPanel;
-
+   public String sendmail;
 		protected Direction dir = Direction.DEFAULT;
 
 
@@ -66,6 +67,9 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
             this.getElement().getStyle()
                     .setProperty("border", "solid lightblue 2px");
             sendMail.addClickHandler(new sendMailHandler());
+
+
+
         }
 
 		private void buildDisplay() {
@@ -77,7 +81,14 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
     private class sendMailHandler implements ClickHandler {
 
         public void onClick(ClickEvent event) {
-            String sendmail = "v"; //sendMail.getText();
+           // String sendmail = "v";
+            service.sendMailAuthor(new BaseCallback<String>() {
+                @Override
+                public void onSuccess(String s) {
+                   sendmail=s;
+                }
+            });
+//            //sendMail.getText();
             String namemail = nameMail.getText();
             String themname =themName.getText();
             String sendmailbox = sendMailBox.getText();

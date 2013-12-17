@@ -29,16 +29,16 @@ width: 50%;
 	    
 	
 		Hello,
-		<g:Button styleName="{style.important}" ui:field="button">login</g:Button>
-		Vasa,<br></br>
-		<g:Button styleName="{style.important}" ui:field="loginEnter">Login</g:Button>
 
+        <br></br>
 		<g:TextBox styleName="{style.important}" ui:field="loginE"></g:TextBox>
-		
+		<br></br>
 		<g:PasswordTextBox styleName="{style.important}" ui:field="passbox"></g:PasswordTextBox>
-		
-	
-			<g:Button styleName ="{style.important}" ui:field="register"></g:Button>
+        <br></br>
+        <g:Button styleName="{style.important}" ui:field="button">Registration</g:Button>
+
+        <g:Button styleName="{style.important}" ui:field="loginEnter">Login</g:Button>
+
 		
 		 
 	</g:HTMLPanel>

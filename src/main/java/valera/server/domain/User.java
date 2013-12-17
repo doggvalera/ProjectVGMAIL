@@ -4,10 +4,11 @@ import org.hibernate.annotations.GenericGenerator;
 import valera.shared.model.UserRegistration;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(generator="increment")

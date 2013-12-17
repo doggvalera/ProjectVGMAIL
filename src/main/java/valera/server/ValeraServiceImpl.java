@@ -80,6 +80,16 @@ public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraSer
         else
         return false;
     }
+    @Override
+    public String sendMailAuthor(){
+        HttpServletRequest request = getThreadLocalRequest();
+        HttpSession session = request.getSession(true);
+        User user = (User)session.getAttribute("user");
+        String userName = user.getLogin();
+        return userName;
+    }
+
+
 
 
     @Override
