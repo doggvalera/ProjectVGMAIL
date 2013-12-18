@@ -5,7 +5,9 @@
 		.important {
 			font-weight: bold;
 			text-align: center;
- 		
+
+        width: 150px;
+            height: 25px;
  			
 		}
 		.navPanel1{
@@ -15,7 +17,10 @@ width: 50%;
   overflow: auto;
   margin: auto;
   position: absolute;
+
   top: 0; left: 0; bottom: 0; right: 0;
+
+
 		}
 	
 .divider {
@@ -28,16 +33,19 @@ width: 50%;
 	<g:HTMLPanel>
 	    
 	
-		Hello,
+
 
         <br></br>
+        Login:<br></br>
 		<g:TextBox styleName="{style.important}" ui:field="loginE"></g:TextBox>
 		<br></br>
+        Password:<br></br>
 		<g:PasswordTextBox styleName="{style.important}" ui:field="passbox"></g:PasswordTextBox>
         <br></br>
         <g:Button styleName="{style.important}" ui:field="button">Registration</g:Button>
-
+        <br></br>
         <g:Button styleName="{style.important}" ui:field="loginEnter">Login</g:Button>
+
 
 		
 		 

@@ -44,18 +44,19 @@
 //import com.google.gwt.user.client.ui.Widget;
 //import com.google.gwt.view.client.ListDataProvider;
 //import com.google.gwt.view.client.SelectionModel;
+//import valera.shared.model.CreateMail;
 //
 //
 //public class CellDataGridExample extends Composite{
 //
-//	
-//	public class CustomCellTableBuilder extends AbstractCellTableBuilder<PhotoDetails>{
+//
+//	public class CustomCellTableBuilder extends AbstractCellTableBuilder<CreateMail>{
 //
 //		String evenRowStyle;
 //		String oddRowStyle;
 //		String rowStyle;
 //		String selectedRowStyle;
-//		
+//
 //		StringBuilder trClasses;
 //
 //		public CustomCellTableBuilder(AbstractCellTable<PhotoDetails> cellTable) {
@@ -66,41 +67,41 @@
 //		      evenRowStyle = " " + style.evenRow();
 //		      oddRowStyle = " " + style.oddRow();
 //		}
-//		
+//
 //		protected void buildNewTagRowImpl(PhotoDetails rowValue, int absRowIndex){
 //			// Start Row
 //			TableRowBuilder row = startRow();
-//		      
+//
 //		    // Render Empty Id cell
 //		    TableCellBuilder idTD = row.startTD();
 //		    idTD.endTD();
-//		      
+//
 //		    // Render Empty Image cell
 //		    TableCellBuilder imageTD = row.startTD();
 //		    imageTD.endTD();
-//		    
+//
 //		    // Render Empty Title cell
 //		    TableCellBuilder titleTD = row.startTD();
 //		    titleTD.endTD();
-//		    
+//
 //		    // Render Tags cell
 //		    TableCellBuilder tagsTD = row.startTD();
 //		    HasCell<PhotoDetails, String> cell = new NewTagCell();
 //		    this.renderCell(tagsTD, createContext(3), cell, rowValue);
 //		    tagsTD.endTD();
-//		    
+//
 //		    // Render Empty Date cell
 //		    TableCellBuilder dateTD = row.startTD();
 //		    dateTD.endTD();
-//		    
-//		    // Render Empty View cell	    
+//
+//		    // Render Empty View cell
 //		    TableCellBuilder viewTD = row.startTD();
 //		    viewTD.endTD();
-//		    
+//
 //		    // End Row
 //		    row.endTR();
 //		}
-//		
+//
 //		@Override
 //		protected void buildRowImpl(PhotoDetails rowValue, int absRowIndex) {
 //			buildStandardRowImpl(rowValue, absRowIndex);
@@ -110,83 +111,83 @@
 //				buildNewTagRowImpl(rowValue, absRowIndex);
 //			}
 //		}
-//		
+//
 //		protected void buildStandardRowImpl(PhotoDetails rowValue, int absRowIndex) {
 //		    determineStyle(rowValue,absRowIndex);
 //			// Start Row
 //			TableRowBuilder row = startRow();
-//			
+//
 //			row.className(trClasses.toString());
-//		      
+//
 //		    // Render Id cell
 //		    TableCellBuilder idTD = row.startTD();
 //		    this.renderCell(idTD, createContext(0), dataGrid.getColumn(0), rowValue);
 //		    idTD.endTD();
-//		      
+//
 //		    // Render Image cell
 //		    TableCellBuilder imageTD = row.startTD();
 //		    this.renderCell(imageTD, createContext(1), dataGrid.getColumn(1), rowValue);
 //		    imageTD.endTD();
-//		    
+//
 //		    // Render Title cell
 //		    TableCellBuilder titleTD = row.startTD();
 //		    this.renderCell(titleTD, createContext(2), dataGrid.getColumn(2), rowValue);
 //		    titleTD.endTD();
-//		    
+//
 //		    // Render Tags cell
 //		    TableCellBuilder tagsTD = row.startTD();
 //		    if(!itemsToExpand.contains(rowValue))
 //		    	this.renderCell(tagsTD, createContext(3), dataGrid.getColumn(3), rowValue);
 //		    tagsTD.endTD();
-//		    
+//
 //		    // Render Date cell
 //		    TableCellBuilder dateTD = row.startTD();
 //		    this.renderCell(dateTD, createContext(4), dataGrid.getColumn(4), rowValue);
 //		    dateTD.endTD();
-//		    
-//		    // Render View cell	    
+//
+//		    // Render View cell
 //		    TableCellBuilder viewTD = row.startTD();
 //		    this.renderCell(viewTD, createContext(5), dataGrid.getColumn(5), rowValue);
 //		    viewTD.endTD();
-//		    
+//
 //		    // End Row
 //		    row.endTR();
 //		}
-//		
+//
 //		protected void buildTagRowImpl(PhotoDetails rowValue, int tagIndex, int absRowIndex){
 //			// Start Row
 //			TableRowBuilder row = startRow();
-//		      
+//
 //		    // Render Empty Id cell
 //		    TableCellBuilder idTD = row.startTD();
 //		    idTD.endTD();
-//		      
+//
 //		    // Render Empty Image cell
 //		    TableCellBuilder imageTD = row.startTD();
 //		    imageTD.endTD();
-//		    
+//
 //		    // Render Empty Title cell
 //		    TableCellBuilder titleTD = row.startTD();
 //		    titleTD.endTD();
-//		    
+//
 //		    // Render Tags cell
 //		    TableCellBuilder tagsTD = row.startTD();
 //		    HasCell<PhotoDetails, String> cell = new TagCell(tagIndex);
 //		    this.renderCell(tagsTD, createContext(3), cell, rowValue);
 //		    tagsTD.endTD();
-//		    
+//
 //		    // Render Empty Date cell
 //		    TableCellBuilder dateTD = row.startTD();
 //		    dateTD.endTD();
-//		    
-//		    // Render Empty View cell	    
+//
+//		    // Render Empty View cell
 //		    TableCellBuilder viewTD = row.startTD();
 //		    viewTD.endTD();
-//		    
+//
 //		    // End Row
 //		    row.endTR();
 //		}
-//		
+//
 //		private void determineStyle(PhotoDetails rowValue, int absRowIndex){
 //			SelectionModel<? super PhotoDetails> selectionModel = dataGrid.getSelectionModel();
 //		      boolean isSelected =
@@ -203,15 +204,15 @@
 //		        trClasses.append(selectedRowStyle);
 //		      }
 //		}
-//		
+//
 //	}
-//	
+//
 //	public class NewTagCell implements HasCell<PhotoDetails, String>{
 //		private TextInputCell cell = new TextInputCell();
-//		
+//
 //		public NewTagCell(){
 //		}
-//		
+//
 //		@Override
 //		public Cell<String> getCell() {
 //			return cell;
@@ -234,14 +235,14 @@
 //	public class TagCell implements HasCell<PhotoDetails, String>{
 //		private EditTextCell cell = new EditTextCell();
 //	    private int index = 0;
-//		
+//
 //		TagResources tagResources = GWT.create(TagResources.class);
 //	    IconCellDecorator<String> decoratorCell = new IconCellDecorator<String>(tagResources.delete(), cell);
-//		
+//
 //		public TagCell(int index){
 //			this.index = index;
 //		}
-//		
+//
 //		@Override
 //		public Cell<String> getCell() {
 //			return decoratorCell;
@@ -256,19 +257,19 @@
 //		public String getValue(PhotoDetails object) {
 //			return object.getTagsList()[index];
 //		}
-//		
+//
 //		public void setIndex(int index){
 //			this.index = index;
 //		}
 //    }
-//	
+//
 //	public interface TagResources extends ClientBundle {
 //		  @Source("delete.png")
 //		  public ImageResource delete();
 //	}
-//	
+//
 //	private static PhotoListTextViewUiBinder uiBinder = GWT.create(PhotoListTextViewUiBinder.class);
-//	
+//
 //	final String COLUMN_NAME_DATE = "Date";
 //	final String COLUMN_NAME_ID = "ID";
 //	final String COLUMN_NAME_IMAGE = "Image";
@@ -285,38 +286,38 @@
 //
 //	@UiField(provided = true)
 //	DataGrid<PhotoDetails> dataGrid;
-//	
+//
 //	CellTableAsyncDataProvider dataProviderAsync;
 //	ListDataProvider<PhotoDetails> dataProviderList;
-//	
+//
 //	Header<String> detailFooter;
 //
 //	Set<PhotoDetails> itemsToExpand = new TreeSet<PhotoDetails>();
-//	
-//	
+//
+//
 //	@UiField(provided = true)
 //	SimplePager pager;
-//	
-//	
+//
+//
 //	public CellDataGridExample() {
 //		dataGrid = new DataGrid<PhotoDetails>();
 //		dataGrid.setEmptyTableWidget(new Label("No Data to Display"));
 //		// Create paging controls.
 //		pager = new SimplePager();
 //		pager.setDisplay(dataGrid);
-//		
+//
 //		initWidget(uiBinder.createAndBindUi(this));
 //		this.setSize("100%", "100%");
 //
 //		//buildTableDefault();
 //		buildTableCustom();
-//		
+//
 //		createWithAsyncDataProvider();
 //		//createWithListDataProvider();
-//		
+//
 //		dataGrid.setPageSize(15);
 //	}
-//	
+//
 //	private Column<PhotoDetails, Date> buildColumnDate(){
 //		columnDate = new Column<PhotoDetails, Date>(
 //			new DatePickerCell((DateTimeFormat) CalendarFactory.getDisplayFormatter())) {
@@ -327,8 +328,8 @@
 //		};
 //		columnDate.setDataStoreName(COLUMN_NAME_DATE);
 //		columnDate.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
-//		columnDate.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);		
-//		
+//		columnDate.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
+//
 //		columnDate.setFieldUpdater(new FieldUpdater<PhotoDetails, Date>() {
 //			@Override
 //			public void update(int index, PhotoDetails object, Date value) {
@@ -353,21 +354,21 @@
 //		};
 //		columnDetails.setDataStoreName(COLUMN_NAME_VIEW);
 //		columnDetails.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
-//		columnDetails.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);		
+//		columnDetails.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
 //		columnDetails.setFieldUpdater(new FieldUpdater<PhotoDetails, String>() {
 //			@Override
 //			public void update(final int index, final PhotoDetails object, String value) {
 //				if (itemsToExpand.contains(object)){
-//					itemsToExpand.remove(object);					
+//					itemsToExpand.remove(object);
 //				} else {
 //					itemsToExpand.add(object);
 //				}
 //				dataGrid.redraw();
 //			}
-//		});	
+//		});
 //		return columnDetails;
 //	}
-//	
+//
 //	private TextColumn<PhotoDetails> buildColumnID(){
 //		columnId = new TextColumn<PhotoDetails>() {
 //			@Override
@@ -398,7 +399,7 @@
 //		return columnImg;
 //	}
 //
-//	
+//
 //	private void addColumnSortAsyncHandling() {
 //		columnId.setSortable(true);
 //		columnTitle.setSortable(true);
@@ -419,15 +420,15 @@
 //		columnSortHandler.setComparator(columnTitle, new TitleComparator());
 //		columnSortHandler.setComparator(columnId, new IdComparator());
 //		columnSortHandler.setComparator(columnDate, new DateComparator());
-//	
-//		
+//
+//
 //		dataGrid.addColumnSortHandler(columnSortHandler);
 //
 //		// We know that the data is sorted by ID by default.
 //		dataGrid.getColumnSortList().push(columnId);
 //	}
-//	
-//	
+//
+//
 //	private TextColumn<PhotoDetails> buildColumnTags(){
 //		columnTags = new TextColumn<PhotoDetails>() {
 //			@Override
@@ -461,8 +462,8 @@
 //		});
 //		return columnTitle;
 //	}
-//	
-//	
+//
+//
 //	private Header<String> buildHeader(final String text){
 //		Header<String> head = new Header<String>(new TextCell()){
 //			@Override
@@ -473,19 +474,19 @@
 //		return head;
 //	}
 //
-//	
+//
 //	private void buildTableCustom(){
 //
 //		CustomCellTableBuilder tableBuilder = new CustomCellTableBuilder(dataGrid);
 //		dataGrid.setTableBuilder(tableBuilder);
 //		buildTableDefault();
 //	}
-//		
+//
 //	private void buildTableDefault() {
 //
 //		// Create common footer
 //		detailFooter = new TextHeader("Details");
-//		
+//
 //		// Build each of the 7 columns
 //		columnId = buildColumnID();
 //		columnImg = buildColumnImage();
@@ -501,19 +502,19 @@
 //		dataGrid.addColumn(columnTags,  buildHeader(COLUMN_NAME_TAGS), detailFooter);
 //		dataGrid.addColumn(columnDate,  buildHeader(COLUMN_NAME_DATE), detailFooter);
 //		dataGrid.addColumn(columnDetails,  buildHeader(COLUMN_NAME_VIEW), buildHeader(COLUMN_NAME_VIEW));
-//		
+//
 //		// Set the column widths
 //		dataGrid.setColumnWidth(0, 60, Unit.PX);
 //		dataGrid.setColumnWidth(1, 60, Unit.PX);
 //		dataGrid.setColumnWidth(2, 250, Unit.PX);
 //		dataGrid.setColumnWidth(3, 250, Unit.PX);
-//	
+//
 //		// Make efficient for IE
 //		dataGrid.setSkipRowHoverCheck(true);
 //		dataGrid.setSkipRowHoverFloatElementCheck(true);
 //		dataGrid.setSkipRowHoverStyleUpdate(true);
 //	};
-//	
+//
 //
 //	private void createWithAsyncDataProvider(){
 //		// Create a data provider.
@@ -522,7 +523,7 @@
 //		dataProviderAsync.updateRowCount(24, true);
 //		addColumnSortAsyncHandling();
 //	}
-//	
+//
 //	private void createWithListDataProvider(){
 //		List<PhotoDetails> theList;
 //
