@@ -40,5 +40,7 @@ public class ValeraGmailMain implements EntryPoint, ValueChangeHandler<String>  
 			valeraPanel.showSentMail();
 		else if (page.equals(HistoryT.NEWMAIL))
 			valeraPanel.showNewMail();
+        else if (page.equals(HistoryT.INBOX))
+            valeraPanel.showInbox();
 	}
 }

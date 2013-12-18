@@ -61,7 +61,7 @@
 				<g:Button addStyleNames="{style.button}" ui:field="introPanel">Main</g:Button>
 				
 				<g:Button addStyleNames="{style.button}" ui:field="sentmail">Sent Mail</g:Button>				
-				<g:Button addStyleNames="{style.button}" ui:field="extend">Entered Mail</g:Button>
+				<g:Button addStyleNames="{style.button}" ui:field="inbox">Inbox</g:Button>
 				<g:Button addStyleNames="{style.button}" ui:field="composite">Notes</g:Button>
 				<g:Button addStyleNames="{style.button}" ui:field="newmail">New Mail</g:Button>
  				

@@ -16,6 +16,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 import valera.client.gui.IntroPanel;
+import valera.client.inbox.InboxFrame;
 import valera.client.newmail.MessegaFrame;
 import valera.client.sentMail.SentMail;
 
@@ -25,6 +26,7 @@ public class ValeraPanel extends Composite {
 
     private MessegaFrame newMail;
     private SentMail sentMail;
+    private InboxFrame inboxMail;
 
     private static ValeraPanelUiBinder uiBinder = GWT.create(ValeraPanelUiBinder.class);
 	    interface ValeraPanelUiBinder extends UiBinder<Widget, ValeraPanel> {}
@@ -66,7 +68,18 @@ public class ValeraPanel extends Composite {
 	 
 	    }
 
-	    
+     @UiHandler("inbox")
+    public void showInbox (ClickEvent event){
+        History.newItem(HistoryT.INBOX);
+
+    }
+
+
+        public void showInbox(){
+        if (inboxMail==null) inboxMail = new InboxFrame();
+        setWidgetAsExample(inboxMail);
+
+        }
 	    
 	    @UiHandler("newmail")
 	    public void showComposite (ClickEvent event){
