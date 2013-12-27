@@ -30,13 +30,12 @@ public class AnwerMsgBox extends DialogBox implements HasText {
 
     @UiField
     public RichTextArea sendMailBox;
-        @UiField
-       public  Button close;
+    @UiField
+    public Button close;
 
 
     public String sendmail;
     protected HasDirection.Direction dir = HasDirection.Direction.DEFAULT;
-
 
 
     interface AnwerMsgBoxUiBinder extends UiBinder<Widget, AnwerMsgBox> {
@@ -52,7 +51,7 @@ public class AnwerMsgBox extends DialogBox implements HasText {
 //          //     hide();
 //            }
 //        });
-       // DivElement rootElement = ourUiBinder.createAndBindUi(this);
+        // DivElement rootElement = ourUiBinder.createAndBindUi(this);
         setWidget(uiBinder.createAndBindUi(this));
 
         setWidget(uiBinder.createAndBindUi(this));
@@ -60,14 +59,10 @@ public class AnwerMsgBox extends DialogBox implements HasText {
 
         service = GWT.create(ValeraService.class);
         close.addClickHandler(new CloseClickHandler());
-
-
-
-
+        sendMail.addClickHandler(new sendMailHandler());
 
 
     }
-
 
 
     private class sendMailHandler implements ClickHandler {
@@ -97,7 +92,7 @@ public class AnwerMsgBox extends DialogBox implements HasText {
 
     private class CloseClickHandler implements ClickHandler {
 
-        public void onClick(ClickEvent event)  {
+        public void onClick(ClickEvent event) {
             hide();
         }
     }
