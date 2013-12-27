@@ -19,6 +19,7 @@ import com.google.gwt.view.client.SingleSelectionModel;
 import valera.client.BaseCallback;
 import valera.shared.InboxService;
 import valera.shared.InboxServiceAsync;
+import valera.shared.ValeraService;
 import valera.shared.ValeraServiceAsync;
 import valera.shared.model.CreateMail;
 
@@ -40,6 +41,7 @@ public class InboxPanel extends Composite {
     //        new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"));
 
     private InboxServiceAsync service = GWT.create(InboxService.class);
+    private ValeraServiceAsync serviceAsync = GWT.create(ValeraService.class);
     private static InboxUiBinder uiBinder = GWT.create(InboxUiBinder.class);
   // private AnwerMsgBox answerBox = new AnwerMsgBox();
     interface InboxUiBinder extends UiBinder<Widget, InboxPanel> {
@@ -56,7 +58,7 @@ public class InboxPanel extends Composite {
    @UiField
     Button answerButton;
     AnwerMsgBox answerBox = new AnwerMsgBox();
-
+    public String sendmail;
 
   //  public
     //
@@ -71,6 +73,7 @@ public class InboxPanel extends Composite {
         //getElement().getStyle().setProperty("b");
         initTable();
         answerButton.addClickHandler(new AnswerClickHandler());
+
     }
 
     private void initTable() {
@@ -88,27 +91,34 @@ public class InboxPanel extends Composite {
             }
         }, "Sent To");
 
-        // TODO: Send username from session
-        service.getMailsTo("v", new BaseCallback<List<CreateMail>>() {
-            @Override
-            public void onSuccess(List<CreateMail> result) {
-                ListDataProvider<CreateMail> dataProvider = new ListDataProvider<CreateMail>();
-                dataProvider.getList().addAll(result);
-                dataProvider.addDataDisplay(cellTable);
 
-                final SingleSelectionModel<CreateMail> selectionModel = new SingleSelectionModel<CreateMail>();
-                cellTable.setSelectionModel(selectionModel);
-                selectionModel.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
-                    public void onSelectionChange(SelectionChangeEvent event) {
-                        // TODO: Set mail RichTextArea with getTextMail()
-                        CreateMail selected = selectionModel.getSelectedObject();
-                        if (selected != null) {
-                            Window.alert("You selected: " + selected.getTextMail());
-                            mailTextArea.setText(selected.getTextMail());
-                        }
+        //
+
+        serviceAsync.sendMailAuthor(new BaseCallback<String>() {
+            @Override
+            public void onSuccess(String s) {
+                sendmail = s;
+                service.getMailsTo(sendmail, new BaseCallback<List<CreateMail>>() {
+                    @Override
+                    public void onSuccess(List<CreateMail> result) {
+                        ListDataProvider<CreateMail> dataProvider = new ListDataProvider<CreateMail>();
+                        dataProvider.getList().addAll(result);
+                        dataProvider.addDataDisplay(cellTable);
+
+                        final SingleSelectionModel<CreateMail> selectionModel = new SingleSelectionModel<CreateMail>();
+                        cellTable.setSelectionModel(selectionModel);
+                        selectionModel.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
+                            public void onSelectionChange(SelectionChangeEvent event) {
+                                // TODO: Set mail RichTextArea with getTextMail()
+                                CreateMail selected = selectionModel.getSelectedObject();
+                                if (selected != null) {
+                                    Window.alert("You selected: " + selected.getTextMail());
+                                    mailTextArea.setText(selected.getTextMail());
+                                }
+                            }
+                        });
                     }
                 });
-
                 cellTable.setWidth("100%", true);
                 cellTable.setPageSize(15);
 
