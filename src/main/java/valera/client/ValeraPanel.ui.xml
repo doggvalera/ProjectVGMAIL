@@ -41,8 +41,9 @@
 
 .logo {
 	background-color: #ffffff;
-	height: 100px;
-	weight: 100px;
+	height: 100;
+	weight: 100;
+
 }
 </ui:style>
 
@@ -52,7 +53,7 @@
 			<g:FlowPanel addStyleNames="{style.navPanel}">
 				<g:HTMLPanel styleName="{style.logo}">
                     <a href="http://127.0.0.1:8888/ValeraGmailMain.html?gwt.codesvr=127.0.0.1:9997">
-                    <!--<g:Image resource="{resources.logo}" />-->
+                    <g:Image resource="{resources.logo}"/>
                     Logo
                     </a>
                 </g:HTMLPanel>

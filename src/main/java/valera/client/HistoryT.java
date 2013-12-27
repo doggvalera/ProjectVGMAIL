@@ -6,6 +6,7 @@ public class HistoryT {
 	static final String TRASHMAIL = "TRASHMAIL";
 	static final String PROFILEMAIL = "frofilemaile";
 	static final String YAVASNEZVALIDITENAHUY = "YAVASNEZVALIDITENAHUY ";
+    static final String MAIN ="main";
 	static final String NEWMAIL = "newmail";
 
 

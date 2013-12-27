@@ -26,8 +26,7 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
     interface NewMailUiBinder extends UiBinder<Widget, NewMail> {
     }
 
-		// The UI elements we will manipulate
-	//	InlineLabel theQuestion;
+
     @UiField
     public Button sendMail;
     @UiField
@@ -35,17 +34,12 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
 
     @UiField
     public TextBox themName;
-    //@UiField
-    //public VerticalPanel panelMail;
+
     @UiField
     public RichTextArea sendMailBox;
-		TextBox theAnswer;
-		//FlowPanel panel;
-		RichTextArea mail;
 
-    TextBox theme;
-    AbsolutePanel absolutePanel;
-    VerticalPanel vPanel;
+
+
    public String sendmail;
 		protected Direction dir = Direction.DEFAULT;
 
@@ -54,18 +48,13 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
 		
 		public NewMail(String question) {
             service = GWT.create(ValeraService.class);
-//			panel = new FlowPanel();
-//			theme = new TextBox();
-//		//	nameMail = new TextBox();
-//			mail = new RichTextArea();
-//			absolutePanel = new AbsolutePanel();
 			buildDisplay();
 
 
 
             initWidget(uiBinder.createAndBindUi(this));
-            this.getElement().getStyle()
-                    .setProperty("border", "solid lightblue 2px");
+            //this.getElement().getStyle()
+                   // .setProperty("border", "solid 1px");
             sendMail.addClickHandler(new sendMailHandler());
 
 
@@ -73,7 +62,7 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
         }
 
 		private void buildDisplay() {
-		//	panel.clear();
+
 
 
         }
@@ -81,14 +70,14 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
     private class sendMailHandler implements ClickHandler {
 
         public void onClick(ClickEvent event) {
-           // String sendmail = "v";
+
             service.sendMailAuthor(new BaseCallback<String>() {
                 @Override
                 public void onSuccess(String s) {
                    sendmail=s;
                 }
             });
-//            //sendMail.getText();
+//
             String namemail = nameMail.getText();
             String themname =themName.getText();
             String sendmailbox = sendMailBox.getText();

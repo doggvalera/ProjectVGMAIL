@@ -43,8 +43,10 @@ public class ValeraPanel extends Composite {
 
 	    
 	    interface Resources extends ClientBundle {
-	        @Source("email.jpg") public ImageResource logo();
-	        
+	        @Source("email.jpg")
+           @ImageResource.ImageOptions (width = 50, height = 50)
+            public ImageResource logo();
+
 	    }
 	    
 	    private ResizeHandler resizeHandler = new ResizeHandler()
