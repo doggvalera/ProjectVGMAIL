@@ -1,54 +1,55 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
-	<ui:style>
-		.important {
-			font-weight: bold;
-			text-align: center;
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:style>
+        .important {
+            font-weight: bold;
+            text-align: center;
 
-        width: 150px;
+            width: 150px;
             height: 25px;
- 			
-		}
-		.navPanel1{
 
-width: 50%;
-  height: 50%;
-  overflow: auto;
-  margin: auto;
-  position: absolute;
+        }
 
-  top: 0; left: 0; bottom: 0; right: 0;
+        .navPanel1 {
 
+            width: 50%;
+            height: 50%;
+            overflow: auto;
+            margin: auto;
+            position: absolute;
 
-		}
-	
-.divider {
-	height: 10px;
-	background: #999999;
-}
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
 
-	</ui:style>
-	  <g:VerticalPanel addStyleNames="{style.navPanel1}">
-	<g:HTMLPanel>
-	    
-	
+        }
 
+        .divider {
+            height: 10px;
+            background: #999999;
+        }
 
-        <br></br>
-        Login:<br></br>
-		<g:TextBox styleName="{style.important}" ui:field="loginE"></g:TextBox>
-		<br></br>
-        Password:<br></br>
-		<g:PasswordTextBox styleName="{style.important}" ui:field="passbox"></g:PasswordTextBox>
-        <br></br>
-        <g:Button styleName="{style.important}" ui:field="button">Registration</g:Button>
-        <br></br>
-        <g:Button styleName="{style.important}" ui:field="loginEnter">Login</g:Button>
+    </ui:style>
+    <g:VerticalPanel addStyleNames="{style.navPanel1}">
+        <g:HTMLPanel>
 
 
-		
-		 
-	</g:HTMLPanel>
-	</g:VerticalPanel>
+            <br></br>
+            Login:
+            <br></br>
+            <g:TextBox styleName="{style.important}" ui:field="loginE"></g:TextBox>
+            <br></br>
+            Password:
+            <br></br>
+            <g:PasswordTextBox styleName="{style.important}" ui:field="passbox"></g:PasswordTextBox>
+            <br></br>
+            <g:Button styleName="{style.important}" ui:field="button">Registration</g:Button>
+            <br></br>
+            <g:Button styleName="{style.important}" ui:field="loginEnter">Login</g:Button>
+
+
+        </g:HTMLPanel>
+    </g:VerticalPanel>
 </ui:UiBinder> 

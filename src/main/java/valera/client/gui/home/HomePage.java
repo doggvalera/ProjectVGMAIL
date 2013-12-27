@@ -27,18 +27,18 @@ import valera.shared.ValeraService;
 import valera.shared.ValeraServiceAsync;
 
 public class HomePage extends Composite implements ValueChangeHandler<String> {
-	private ValeraServiceAsync service;
+    private ValeraServiceAsync service;
 
 //	private DialogBox dialogBoxRegistration = new DialogBox();
-	
-	@UiField
-	Button loginEnter;
-	
-	@UiField
-	Button button;
-	@UiField 
-	TextBox loginE;
-	
+
+    @UiField
+    Button loginEnter;
+
+    @UiField
+    Button button;
+    @UiField
+    TextBox loginE;
+
 //	@UiField
 //	Button registerNew;
 //	@UiField
@@ -49,25 +49,25 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
 //	 TextBox surname; 
 //	@UiField 
 //	Button register; 
-	
-	@UiField
-	PasswordTextBox passbox;
+
+    @UiField
+    PasswordTextBox passbox;
 
 
-	 RegestrationBox dialogBoxRegistration = new RegestrationBox();
-	
-	 VerticalPanel vPanel = new VerticalPanel();
-	 VerticalPanel vPanelReg = new VerticalPanel();
+    RegestrationBox dialogBoxRegistration = new RegestrationBox();
 
-	 
-	public HomePage() {
-		//initWidget(this.vPanelReg);
-		
-		initWidget(uiBinder.createAndBindUi(this));
-		
-		service = GWT.create(ValeraService.class);
-		loginEnter.addClickHandler(new LoginEnterClickHandler());
-		button.addClickHandler(new RegisterNewCkickHandler());
+    VerticalPanel vPanel = new VerticalPanel();
+    VerticalPanel vPanelReg = new VerticalPanel();
+
+
+    public HomePage() {
+        //initWidget(this.vPanelReg);
+
+        initWidget(uiBinder.createAndBindUi(this));
+
+        service = GWT.create(ValeraService.class);
+        loginEnter.addClickHandler(new LoginEnterClickHandler());
+        button.addClickHandler(new RegisterNewCkickHandler());
 //		this.dialogBoxRegistration.add(vPanel);
 //		this.vPanel.add(name);
 //		this.vPanel.add(login);
@@ -79,12 +79,12 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
 //		this.registerNew.addClickHandler(new RegisterNewCkickHandler());
 //		dialogBoxRegistration.setText("Registration");
 //		dialogBoxRegistration.setAnimationEnabled(true);
-	//	RootPanel.get().add(loginEnter);
+        //	RootPanel.get().add(loginEnter);
 
-		// Button search = Button.wrap(DOM.getElementById("search"));
+        // Button search = Button.wrap(DOM.getElementById("search"));
 
-		
-	}
+
+    }
 
 //
 //	private class RegisterClickHandler implements ClickHandler {
@@ -107,22 +107,21 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
 //
 //	}
 
-	private class RegisterNewCkickHandler implements ClickHandler {
+    private class RegisterNewCkickHandler implements ClickHandler {
 
-		public void onClick(ClickEvent event) {
-			dialogBoxRegistration.show();
-			dialogBoxRegistration.center();
-			History.newItem("register");
+        public void onClick(ClickEvent event) {
+            dialogBoxRegistration.show();
+            dialogBoxRegistration.center();
+            History.newItem("register");
 
-		}
-	}
+        }
+    }
 
-	private class LoginEnterClickHandler implements ClickHandler {
+    private class LoginEnterClickHandler implements ClickHandler {
 
-		public void onClick(ClickEvent event) {
-       final String login = loginE.getText();
+        public void onClick(ClickEvent event) {
+            final String login = loginE.getText();
             String password = passbox.getText();
-
 
 
 //            service.loginEnter(login,password,new BaseCallback<Boolean>() {
@@ -134,81 +133,78 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
 //            });
 
 
-
-            service.loginEnter(login,password,new BaseCallback<Boolean>() {
+            service.loginEnter(login, password, new BaseCallback<Boolean>() {
                 @Override
-                public void onSuccess(Boolean userEnter){
-                if ( userEnter==true) { service.autorize(login,new BaseCallback<Void>(){
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        System.out.println(login);
-                    }
-                });
-                    FlowControl.go(ValeraGmailMain.valeraPanel);} else System.out.println("user not created");
+                public void onSuccess(Boolean userEnter) {
+                    if (userEnter == true) {
+                        service.autorize(login, new BaseCallback<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                System.out.println(login);
+                            }
+                        });
+                        FlowControl.go(ValeraGmailMain.valeraPanel);
+                    } else System.out.println("user not created");
 
                 }
             });
 
 
+        }
 
-		}
+    }
 
-	}
+    // private void showHomePage() {
+    // showToken("register");
+    // }
+    //
 
-	// private void showHomePage() {
-	// showToken("register");
-	// }
-	//
-	
-	
-	private static HomePageUiBinder uiBinder = GWT
-			.create(HomePageUiBinder.class);
 
-	interface HomePageUiBinder extends UiBinder<Widget, HomePage> {
-	}
+    private static HomePageUiBinder uiBinder = GWT
+            .create(HomePageUiBinder.class);
 
-	
-	
-	
+    interface HomePageUiBinder extends UiBinder<Widget, HomePage> {
+    }
 
-	public void setUpHistoryManagement() {
-		// Make this class your history manager (see onValueChange method)
-		History.addValueChangeHandler(this);
-		// Handle any existing history token
-		History.fireCurrentHistoryState();
-		// Trap the user if they hit the back button too many times
-		Window.addWindowClosingHandler(new ClosingHandler() {
-			public void onWindowClosing(ClosingEvent event) {
-				event.setMessage("Ran out of history.  Now leaving application, is that OK?");
-			}
-		});
-	}
 
-	private void showHomePage() {
-		showToken("");
-	}
+    public void setUpHistoryManagement() {
+        // Make this class your history manager (see onValueChange method)
+        History.addValueChangeHandler(this);
+        // Handle any existing history token
+        History.fireCurrentHistoryState();
+        // Trap the user if they hit the back button too many times
+        Window.addWindowClosingHandler(new ClosingHandler() {
+            public void onWindowClosing(ClosingEvent event) {
+                event.setMessage("Ran out of history.  Now leaving application, is that OK?");
+            }
+        });
+    }
 
-	private void showToken(String token) {
-		if (vPanel != null) {
-			Label newItem = new Label(token);
-			RootPanel.get().add(newItem);
+    private void showHomePage() {
+        showToken("");
+    }
 
-		}
-	}
+    private void showToken(String token) {
+        if (vPanel != null) {
+            Label newItem = new Label(token);
+            RootPanel.get().add(newItem);
 
-	public void onValueChange(ValueChangeEvent<String> event) {
-		// Get the token from the event
-		String token = null;
-		if (event.getValue() != null)
-			token = event.getValue().trim();
-		// Check if the token is null or empty
-		if ((token == null) || (token.equals("register")))
-			showHomePage();
-		// Else check what the token is and call the appropriate method.
+        }
+    }
 
-		else
-			// By default, show the Home page.
-			showHomePage();
-	}
+    public void onValueChange(ValueChangeEvent<String> event) {
+        // Get the token from the event
+        String token = null;
+        if (event.getValue() != null)
+            token = event.getValue().trim();
+        // Check if the token is null or empty
+        if ((token == null) || (token.equals("register")))
+            showHomePage();
+            // Else check what the token is and call the appropriate method.
+
+        else
+            // By default, show the Home page.
+            showHomePage();
+    }
 
 }

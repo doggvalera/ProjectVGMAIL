@@ -14,38 +14,25 @@ import com.google.gwt.user.client.ui.TextBox;
 
 public class MessegaFrame extends Composite {
 
-	
-	
 
-	//NewMail newMailSend;
+    //NewMail newMailSend;
 
 
-	/**
-	 * Creates the Widget. Sets up history handling, the GUI components, and
-	 * button handling.
-	 */
+    /**
+     * Creates the Widget. Sets up history handling, the GUI components, and
+     * button handling.
+     */
 
 
-	public MessegaFrame() {
-		AbsolutePanel display = new AbsolutePanel();
-		 
-		final NewMail newMailSend = new NewMail("Question One ");
+    public MessegaFrame() {
+        AbsolutePanel display = new AbsolutePanel();
 
-		display.add(newMailSend);
+        final NewMail newMailSend = new NewMail("Question One ");
 
-		
+        display.add(newMailSend);
 
-		initWidget(display);
 
-		newMailSend.addMouseOverHandler(new MouseOverHandler() {
-			public void onMouseOver(MouseOverEvent event) {
-				newMailSend.getElement().getStyle()
-						.setBorderStyle(BorderStyle.DOTTED);
+        initWidget(display);
+    }
 
-			}
-		});
-
-	
-} 
-	
 }

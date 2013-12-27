@@ -7,14 +7,20 @@ import valera.shared.model.CreateMail;
 import valera.shared.model.UserRegistration;
 
 @RemoteServiceRelativePath("valeraservice")
-public interface ValeraService extends RemoteService { 
+public interface ValeraService extends RemoteService {
 
-	UserRegistration getUserRegistration(String login, String name, String surname, String password);
-     boolean register(UserRegistration userRegistration);
+    UserRegistration getUserRegistration(String login, String name, String surname, String password);
+
+    boolean register(UserRegistration userRegistration);
+
     boolean loginEnter(String login, String password);
+
     public void autorize(String login);
+
     public boolean isAutorized();
+
     public boolean sendMail(CreateMail mail);
+
     public String sendMailAuthor();
 
 }

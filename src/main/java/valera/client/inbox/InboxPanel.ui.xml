@@ -1,39 +1,26 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:c="urn:import:com.google.gwt.user.cellview.client">
     <ui:style>
-        .important {
-            width: 50%;
-            height: 50%;
-            font-weight: bold;
-            text-align: center;
-
-
-        }
-        .navPanel1{
-
-            width: 50%;
-            height: 50%;
-            overflow: auto;
-            margin: auto;
-            position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
+        .cellTable {
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+            margin-bottom: 4px;
         }
 
-        .divider {
-            height: 1000px;
-            width: 1000px;
-            background: #999999;
+        .panel {
+            overflow:scroll;
         }
-
     </ui:style>
 
-        <g:HTMLPanel>
+    <g:HTMLPanel>
 
-            <g:VerticalPanel addStyleNames="{style.divider}" ui:field="vPanel">
-
-            <g:Button addStyleNames="{style.important}" ui:field="refresh">refresh</g:Button>
-           </g:VerticalPanel>
-        </g:HTMLPanel>
+        <g:VerticalPanel styleName="{style.panel}" ui:field="vPanel">
+            <c:CellTable addStyleNames='{style.cellTable}' pageSize='15' ui:field='cellTable'/>
+            <c:SimplePager ui:field='pager'/>
+            <g:RichTextArea ui:field="mailTextArea"/>
+        </g:VerticalPanel>
+    </g:HTMLPanel>
 
 </ui:UiBinder>

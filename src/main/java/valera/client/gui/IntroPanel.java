@@ -12,22 +12,24 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class IntroPanel extends Composite {
 
-  private static InstructionsPanelUiBinder uiBinder = GWT.create(InstructionsPanelUiBinder.class);
+    private static InstructionsPanelUiBinder uiBinder = GWT.create(InstructionsPanelUiBinder.class);
 
-  interface InstructionsPanelUiBinder extends UiBinder<Widget, IntroPanel> {}
-
-  @UiField ScrollPanel scrollPanel;
-
-  public IntroPanel() {
-    initWidget(uiBinder.createAndBindUi(this));
-    Window.addResizeHandler(resizeHandler);
-  }
-  
-  private ResizeHandler resizeHandler = new ResizeHandler() {
-    
-    public void onResize(ResizeEvent event) {
-      scrollPanel.setHeight((event.getHeight() - 20) + "px");
+    interface InstructionsPanelUiBinder extends UiBinder<Widget, IntroPanel> {
     }
-  };
+
+    @UiField
+    ScrollPanel scrollPanel;
+
+    public IntroPanel() {
+        initWidget(uiBinder.createAndBindUi(this));
+        Window.addResizeHandler(resizeHandler);
+    }
+
+    private ResizeHandler resizeHandler = new ResizeHandler() {
+
+        public void onResize(ResizeEvent event) {
+            scrollPanel.setHeight((event.getHeight() - 20) + "px");
+        }
+    };
 
 }

@@ -7,15 +7,17 @@ import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.cellview.client.CellTable;
-import com.google.gwt.user.cellview.client.Column;
-import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy;
-import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.cellview.client.*;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
+import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.SelectionChangeEvent;
 import com.google.gwt.view.client.SingleSelectionModel;
+import valera.client.BaseCallback;
+import valera.shared.InboxService;
+import valera.shared.InboxServiceAsync;
 import valera.shared.ValeraServiceAsync;
+import valera.shared.model.CreateMail;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -26,36 +28,77 @@ import java.util.List;
  */
 
 
-public class InboxPanel extends Composite{
+public class InboxPanel extends Composite {
 
 
+    public static final List<CreateMail> CREATE_MAILS = Arrays.asList(new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"),
+            new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"));
 
-    private ValeraServiceAsync service;
-    private static InboxUiBinder uiBinder = GWT
-            .create(InboxUiBinder.class);
-    interface InboxUiBinder extends UiBinder<Widget, InboxPanel> {
-    }
+    private InboxServiceAsync service = GWT.create(InboxService.class);
+    private static InboxUiBinder uiBinder = GWT.create(InboxUiBinder.class);
+    interface InboxUiBinder extends UiBinder<Widget, InboxPanel> {}
 
-
-
-
-
-    @UiField
-    Button refresh;
     @UiField
     VerticalPanel vPanel;
+    @UiField
+    CellTable<CreateMail> cellTable;
+    @UiField(provided = true)
+    SimplePager pager;
+    @UiField
+    RichTextArea mailTextArea;
 
-    Table table = new Table();
     public InboxPanel(String question) {
-
+        SimplePager.Resources pagerResources = GWT.create(SimplePager.Resources.class);
+        pager = new SimplePager(SimplePager.TextLocation.CENTER, pagerResources, false, 0, true);
 
         initWidget(uiBinder.createAndBindUi(this));
-        this.getElement().getStyle()
-                .setProperty("border", "solid lightblue 2px");
-                vPanel.add(table);
 
+        getElement().getStyle().setProperty("border", "solid lightblue 2px");
+        initTable();
+    }
 
+    private void initTable() {
+        cellTable.addColumn(new TextColumn<CreateMail>() {
+            @Override
+            public String getValue(CreateMail object) {
+                return object.getLoginTo();
+            }
+        }, "Sent By");
 
+        cellTable.addColumn(new TextColumn<CreateMail>() {
+            @Override
+            public String getValue(CreateMail object) {
+                return object.getLoginFrom();
+            }
+        }, "Sent To");
+
+        // TODO: Send username from session
+        service.getMailsTo("v", new BaseCallback<List<CreateMail>>() {
+            @Override
+            public void onSuccess(List<CreateMail> result) {
+                ListDataProvider<CreateMail> dataProvider = new ListDataProvider<CreateMail>();
+                dataProvider.getList().addAll(result);
+                dataProvider.addDataDisplay(cellTable);
+
+                final SingleSelectionModel<CreateMail> selectionModel = new SingleSelectionModel<CreateMail>();
+                cellTable.setSelectionModel(selectionModel);
+                selectionModel.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
+                    public void onSelectionChange(SelectionChangeEvent event) {
+                        // TODO: Set mail RichTextArea with getTextMail()
+                        CreateMail selected = selectionModel.getSelectedObject();
+                        if (selected != null) {
+                            Window.alert("You selected: " + selected.getTextMail());
+                            mailTextArea.setText(selected.getTextMail());
+                        }
+                    }
+                });
+
+                cellTable.setWidth("100%", true);
+                cellTable.setPageSize(15);
+
+                pager.setDisplay(cellTable);
+            }
+        });
     }
 
     public HandlerRegistration addMouseOverHandler(MouseOverHandler handler) {

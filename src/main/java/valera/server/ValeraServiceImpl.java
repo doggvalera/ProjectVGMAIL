@@ -33,23 +33,21 @@ public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraSer
 //        }
 //        return false;
         boolean canRegistr = true;
-        if (userRepositry.loginExis(user) == true) {
+        if (userRepositry.loginExis(user)) {
             canRegistr = false;
             System.out.println("userExists");
 
         }
-        if (userRepositry.checkLogin(user) != true) {
+        if (!userRepositry.checkLogin(user)) {
             canRegistr = false;
             System.out.println("wrong login");
         }
-        if (canRegistr == true) {
+        if (canRegistr) {
             userRepositry.save(user);
             return true;
         } else
             return false;
     }
-
-
 
 
     @Override
@@ -62,45 +60,43 @@ public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraSer
 
 
     @Override
-    public void autorize(String login){
+    public void autorize(String login) {
         User user = userRepositry.getUserByLogin(login);
         HttpServletRequest request = getThreadLocalRequest();
         HttpSession session = request.getSession(true);
-        session.setAttribute("user",user);
+        session.setAttribute("user", user);
     }
 
     @Override
     public boolean isAutorized() {
         HttpServletRequest request = getThreadLocalRequest();
         HttpSession session = request.getSession(true);
-        if (session.getAttribute("user")!=null){
+        if (session.getAttribute("user") != null) {
             return true;
 
-        }
-        else
-        return false;
+        } else
+            return false;
     }
+
     @Override
-    public String sendMailAuthor(){
+    public String sendMailAuthor() {
         HttpServletRequest request = getThreadLocalRequest();
         HttpSession session = request.getSession(true);
-        User user = (User)session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         String userName = user.getLogin();
         return userName;
     }
 
 
-
-
     @Override
-    public boolean sendMail(CreateMail mail){
+    public boolean sendMail(CreateMail mail) {
         Mails mails = new Mails(mail);
-       if (mail.getLoginTo()!=null){
+        if (mail.getLoginTo() != null) {
 
-         mailRepository.save(mails);
-           return true;
+            mailRepository.save(mails);
+            return true;
 
-       } else return false;
+        } else return false;
     }
 
 

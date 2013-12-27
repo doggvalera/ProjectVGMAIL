@@ -74,23 +74,21 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
             service.sendMailAuthor(new BaseCallback<String>() {
                 @Override
                 public void onSuccess(String s) {
-                   sendmail=s;
+                    sendmail = s;
+                    String namemail = nameMail.getText();
+                    String themname = themName.getText();
+                    String sendmailbox = sendMailBox.getText();
+
+                    CreateMail crtml = new CreateMail(sendmail, namemail, themname, sendmailbox);
+                    service.sendMail(crtml, new BaseCallback<Boolean>() {
+
+                        @Override
+                        public void onSuccess(Boolean aBoolean) {
+                            System.out.println("all okey");
+                        }
+                    });
                 }
             });
-//
-            String namemail = nameMail.getText();
-            String themname =themName.getText();
-            String sendmailbox = sendMailBox.getText();
-
-            CreateMail crtml = new CreateMail(sendmail, namemail, themname,sendmailbox);
-            service.sendMail(crtml,new BaseCallback<Boolean>(){
-
-                @Override
-                public void onSuccess(Boolean aBoolean) {
-                    System.out.println("all okey");
-                }
-            });
-
         }
     }
 

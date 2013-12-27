@@ -21,56 +21,56 @@ import valera.shared.model.UserRegistration;
 import javax.inject.Inject;
 
 public class RegestrationBox extends DialogBox implements HasText {
-	private ValeraServiceAsync service;
-	private static RegestrationBoxUiBinder uiBinder = GWT
-			.create(RegestrationBoxUiBinder.class);
+    private ValeraServiceAsync service;
+    private static RegestrationBoxUiBinder uiBinder = GWT
+            .create(RegestrationBoxUiBinder.class);
 
-	interface RegestrationBoxUiBinder extends UiBinder<Widget, RegestrationBox> {
-	}
+    interface RegestrationBoxUiBinder extends UiBinder<Widget, RegestrationBox> {
+    }
 
-	public RegestrationBox() {
-		setWidget(uiBinder.createAndBindUi(this));
+    public RegestrationBox() {
+        setWidget(uiBinder.createAndBindUi(this));
 
-		setWidget(uiBinder.createAndBindUi(this));
-		service = GWT.create(ValeraService.class);
-		
-		this.registerNew.addClickHandler(new RegisterClickHandler());
-	}
+        setWidget(uiBinder.createAndBindUi(this));
+        service = GWT.create(ValeraService.class);
 
-	@UiField
-	Button registerNew;
-	@UiField
-	 TextBox name;
-	@UiField
-	 TextBox login; 
-	@UiField
-	 TextBox surname; 
-	@UiField 
-	Label loginLabel;
-	@UiField 
-	Label passwordLabel;
-	@UiField 
-	Label nameLabel;
-	@UiField
-	Label surNameLabel;
-	@UiField
-	VerticalPanel vPanelReg;
-	@UiField 
-	PasswordTextBox password;
-	@UiField
-	PasswordTextBox passwordRepeat;
-	@UiField 
-	Label passwordLabelRepeat;
-	//	this.registerNew.addClickHandler(new RegisterNewCkickHandler());
+        this.registerNew.addClickHandler(new RegisterClickHandler());
+    }
 
-	private class RegisterClickHandler implements ClickHandler {
+    @UiField
+    Button registerNew;
+    @UiField
+    TextBox name;
+    @UiField
+    TextBox login;
+    @UiField
+    TextBox surname;
+    @UiField
+    Label loginLabel;
+    @UiField
+    Label passwordLabel;
+    @UiField
+    Label nameLabel;
+    @UiField
+    Label surNameLabel;
+    @UiField
+    VerticalPanel vPanelReg;
+    @UiField
+    PasswordTextBox password;
+    @UiField
+    PasswordTextBox passwordRepeat;
+    @UiField
+    Label passwordLabelRepeat;
+    //	this.registerNew.addClickHandler(new RegisterNewCkickHandler());
 
-		public void onClick(ClickEvent event) {
-			String name1 = name.getText();
-			String login1 = login.getText();
-			String surname1 = surname.getText();
-			String password1=password.getText();
-			//service.getUserRegistration(login1, name1, surname1,password1,
+    private class RegisterClickHandler implements ClickHandler {
+
+        public void onClick(ClickEvent event) {
+            String name1 = name.getText();
+            String login1 = login.getText();
+            String surname1 = surname.getText();
+            String password1 = password.getText();
+            //service.getUserRegistration(login1, name1, surname1,password1,
 //					new BaseCallback<UserRegistration>() {
 //
 //						public void onSuccess(UserRegistration result) {
@@ -79,21 +79,21 @@ public class RegestrationBox extends DialogBox implements HasText {
 //					});
 //			name.setText("Work");
 
-            UserRegistration reg = new UserRegistration(name1,login1,surname1,password1);
-         //   if(loginService.ifExist(reg)){
-          //      login.setText("User exist");
+            UserRegistration reg = new UserRegistration(name1, login1, surname1, password1);
+            //   if(loginService.ifExist(reg)){
+            //      login.setText("User exist");
 
 //            }
-            service.register(reg,new BaseCallback<Boolean>() {
+            service.register(reg, new BaseCallback<Boolean>() {
                 @Override
                 public void onSuccess(Boolean userExist) {
                     // TODO: need to show if user exist.
-                   name.setText("");
+                    name.setText("");
                     login.setText("");
                     surname.setText("");
                     password.setText("");
                 }
             });
-		}
-	}
+        }
+    }
 }

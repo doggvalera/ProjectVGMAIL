@@ -7,8 +7,7 @@ import java.io.Serializable;
  */
 
 
-
-public class CreateMail implements Serializable, Comparable<CreateMail>{
+public class CreateMail implements Serializable, Comparable<CreateMail> {
 
 
     private String loginTo;
@@ -17,21 +16,19 @@ public class CreateMail implements Serializable, Comparable<CreateMail>{
     private String textMail;
 
 
-
-    public CreateMail(String loginTo, String loginFrom, String theme, String textMail){
-       this.loginTo=loginTo;
-        this.loginFrom=loginFrom;
+    public CreateMail(String loginTo, String loginFrom, String theme, String textMail) {
+        this.loginTo = loginTo;
+        this.loginFrom = loginFrom;
         this.theme = theme;
         this.textMail = textMail;
     }
 
     public CreateMail() {
     }
+
     public int compareTo(CreateMail o) {
         return this.loginTo.compareTo(o.loginTo);
     }
-
-
 
 
     public String getLoginTo() {

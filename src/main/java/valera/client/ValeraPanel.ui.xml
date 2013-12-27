@@ -43,9 +43,15 @@
 	background-color: #ffffff;
 	height: 100;
 	weight: 100;
+}
 
+.logo-img {
+    height: 100px;
+    weight: 100px;
 }
 </ui:style>
+
+<ui:with field='res' type='valera.client.ValeraPanel.Resources'/>
 
 <g:DockLayoutPanel unit="PX">
 	<g:west size="180">
@@ -53,8 +59,7 @@
 			<g:FlowPanel addStyleNames="{style.navPanel}">
 				<g:HTMLPanel styleName="{style.logo}">
                     <a href="http://127.0.0.1:8888/ValeraGmailMain.html?gwt.codesvr=127.0.0.1:9997">
-                    <g:Image resource="{resources.logo}"/>
-                    Logo
+                        <g:Image styleName="{style.logo-img}" url="{res.logo.getSafeUri.asString}"/>
                     </a>
                 </g:HTMLPanel>
 				<g:Label addStyleNames="{style.title}">Examples</g:Label>
@@ -71,7 +76,7 @@
 		</g:ScrollPanel>
 	</g:west>
 	<g:center>
-		<g:SimplePanel ui:field="exampleArea"  addStyleNames="{style.exampleArea}"/>
+		<g:ScrollPanel ui:field="exampleArea"  addStyleNames="{style.exampleArea}"/>
 	</g:center>
 </g:DockLayoutPanel>
 

@@ -8,9 +8,9 @@ public class EntityManagerFactoryClass {
 
 
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("booking");
-	
-	public static EntityManager getEntityManager(){
-		return emf.createEntityManager();
-	}
-	
+
+    public static EntityManager getEntityManager() {
+        return emf.createEntityManager();
+    }
+
 }

@@ -11,16 +11,17 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     private int id;
     private String name;
     private String login;
     private String surname;
-//    @Transient
+    //    @Transient
     private String password;
 
-    public User() {}
+    public User() {
+    }
 
     public User(UserRegistration userRegistration) {
         login = userRegistration.getLogin();

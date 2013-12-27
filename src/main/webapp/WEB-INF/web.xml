@@ -17,6 +17,15 @@
     <url-pattern>/valeragmailmain/valeraservice</url-pattern>
   </servlet-mapping>
 
+    <servlet>
+        <servlet-name>inboxService</servlet-name>
+        <servlet-class>valera.server.InboxServiceImpl</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>inboxService</servlet-name>
+        <url-pattern>/valeragmailmain/inboxService</url-pattern>
+    </servlet-mapping>
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

@@ -17,21 +17,23 @@ public class Mails {
 
 
     @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
 
     private int id;
     private String loginTo;
     private String loginFrom;
     private String theme;
     private String textMail;
-    public Mails(){}
 
-    public Mails(CreateMail createMail){
-        loginTo=createMail.getLoginTo();
-        loginFrom=createMail.getLoginFrom();
-        theme=createMail.getTheme();
-        textMail=createMail.getTextMail();
+    public Mails() {
+    }
+
+    public Mails(CreateMail createMail) {
+        loginTo = createMail.getLoginTo();
+        loginFrom = createMail.getLoginFrom();
+        theme = createMail.getTheme();
+        textMail = createMail.getTextMail();
     }
 
 
