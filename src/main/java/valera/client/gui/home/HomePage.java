@@ -39,16 +39,6 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
     @UiField
     TextBox loginE;
 
-//	@UiField
-//	Button registerNew;
-//	@UiField
-//	 TextBox name;
-//	@UiField
-//	 TextBox login; 
-//	@UiField
-//	 TextBox surname; 
-//	@UiField 
-//	Button register; 
 
     @UiField
     PasswordTextBox passbox;

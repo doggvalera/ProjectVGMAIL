@@ -1,0 +1,27 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+
+        <ui:style>
+
+        .important {
+        font-weight: bold;
+        }
+
+        .panel {
+        background-color: ivory;
+        }
+        </ui:style>
+        <g:HTMLPanel>
+
+            <g:VerticalPanel styleName="{style.panel}" ui:field="vPanelReg">
+                <g:Button styleName="{style.important}" ui:field="sendMail"></g:Button>
+                <g:TextBox styleName="{style.important}" ui:field="nameMail"></g:TextBox>
+                <g:TextBox styleName="{style.important}"  ui:field="themName"></g:TextBox>
+                <g:RichTextArea styleName="{style.important}" ui:field="sendMailBox"></g:RichTextArea>
+
+                <g:Button styleName="{style.important}" ui:field="close"></g:Button>
+            </g:VerticalPanel>
+        </g:HTMLPanel>
+
+</ui:UiBinder>

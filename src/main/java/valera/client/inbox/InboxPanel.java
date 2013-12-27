@@ -2,12 +2,15 @@ package valera.client.inbox;
 
 import com.google.gwt.cell.client.DateCell;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.*;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.view.client.ListDataProvider;
@@ -23,6 +26,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import static valera.client.inbox.AnwerMsgBox.*;
+
 /**
  * Created by valerijszemlanikins on 18.12.13.
  */
@@ -31,12 +36,14 @@ import java.util.List;
 public class InboxPanel extends Composite {
 
 
-    public static final List<CreateMail> CREATE_MAILS = Arrays.asList(new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"),
-            new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"));
+    // public static final List<CreateMail> CREATE_MAILS = Arrays.asList(new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"),
+    //        new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"), new CreateMail("v", "Valera", "theme", "mail"));
 
     private InboxServiceAsync service = GWT.create(InboxService.class);
     private static InboxUiBinder uiBinder = GWT.create(InboxUiBinder.class);
-    interface InboxUiBinder extends UiBinder<Widget, InboxPanel> {}
+  // private AnwerMsgBox answerBox = new AnwerMsgBox();
+    interface InboxUiBinder extends UiBinder<Widget, InboxPanel> {
+    }
 
     @UiField
     VerticalPanel vPanel;
@@ -46,15 +53,24 @@ public class InboxPanel extends Composite {
     SimplePager pager;
     @UiField
     RichTextArea mailTextArea;
+   @UiField
+    Button answerButton;
+    AnwerMsgBox answerBox = new AnwerMsgBox();
+
+
+  //  public
+    //
 
     public InboxPanel(String question) {
+
         SimplePager.Resources pagerResources = GWT.create(SimplePager.Resources.class);
         pager = new SimplePager(SimplePager.TextLocation.CENTER, pagerResources, false, 0, true);
 
         initWidget(uiBinder.createAndBindUi(this));
 
-        getElement().getStyle().setProperty("border", "solid lightblue 2px");
+        //getElement().getStyle().setProperty("b");
         initTable();
+        answerButton.addClickHandler(new AnswerClickHandler());
     }
 
     private void initTable() {
@@ -99,6 +115,16 @@ public class InboxPanel extends Composite {
                 pager.setDisplay(cellTable);
             }
         });
+    }
+    private class AnswerClickHandler implements ClickHandler {
+
+        public void onClick(ClickEvent event) {
+
+        answerBox.show();
+        answerBox.center();
+
+
+        }
     }
 
     public HandlerRegistration addMouseOverHandler(MouseOverHandler handler) {

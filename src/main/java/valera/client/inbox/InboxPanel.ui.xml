@@ -12,6 +12,14 @@
         .panel {
             overflow:scroll;
         }
+
+        .richText{
+            width: 100%;
+            height: auto;
+        }
+        .button{
+
+        }
     </ui:style>
 
     <g:HTMLPanel>
@@ -19,7 +27,8 @@
         <g:VerticalPanel styleName="{style.panel}" ui:field="vPanel">
             <c:CellTable addStyleNames='{style.cellTable}' pageSize='15' ui:field='cellTable'/>
             <c:SimplePager ui:field='pager'/>
-            <g:RichTextArea ui:field="mailTextArea"/>
+            <g:RichTextArea styleName="{style.richText}" ui:field="mailTextArea"/>
+            <g:Button styleName="{style.button}" ui:field="answerButton">Answer</g:Button>
         </g:VerticalPanel>
     </g:HTMLPanel>
 
