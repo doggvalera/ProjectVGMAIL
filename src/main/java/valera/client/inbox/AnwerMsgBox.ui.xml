@@ -6,6 +6,7 @@
 
         .important {
         font-weight: bold;
+            align-items: center;
         }
 
         .panel {
@@ -15,8 +16,9 @@
         <g:HTMLPanel>
 
             <g:VerticalPanel styleName="{style.panel}" ui:field="vPanelReg">
-
+                <g:Label ui:field="labelSendName">Name:</g:Label>
                 <g:TextBox styleName="{style.important}" ui:field="nameMail"></g:TextBox>
+                <g:Label ui:field="labelSendTheme">Theme:</g:Label>
                 <g:TextBox styleName="{style.important}"  ui:field="themName"></g:TextBox>
                 <g:RichTextArea styleName="{style.important}" ui:field="sendMailBox"></g:RichTextArea>
                 <g:Button styleName="{style.important}" ui:field="sendMail">Send Mail</g:Button>

@@ -43,7 +43,8 @@ public class InboxPanel extends Composite {
     private InboxServiceAsync service = GWT.create(InboxService.class);
     private ValeraServiceAsync serviceAsync = GWT.create(ValeraService.class);
     private static InboxUiBinder uiBinder = GWT.create(InboxUiBinder.class);
-  // private AnwerMsgBox answerBox = new AnwerMsgBox();
+
+    // private AnwerMsgBox answerBox = new AnwerMsgBox();
     interface InboxUiBinder extends UiBinder<Widget, InboxPanel> {
     }
 
@@ -55,12 +56,13 @@ public class InboxPanel extends Composite {
     SimplePager pager;
     @UiField
     RichTextArea mailTextArea;
-   @UiField
+    @UiField
     Button answerButton;
-    AnwerMsgBox answerBox = new AnwerMsgBox();
+    public String name;
+    AnwerMsgBox answerBox = new AnwerMsgBox(name);
     public String sendmail;
 
-  //  public
+    //  public
     //
 
     public InboxPanel(String question) {
@@ -112,8 +114,14 @@ public class InboxPanel extends Composite {
                                 // TODO: Set mail RichTextArea with getTextMail()
                                 CreateMail selected = selectionModel.getSelectedObject();
                                 if (selected != null) {
-                                    Window.alert("You selected: " + selected.getTextMail());
+                                    //Window.alert("You selected: " + selected.getTextMail());
                                     mailTextArea.setText(selected.getTextMail());
+                                    name = (selected.getLoginFrom());
+
+
+                                    //nameMail.setText(name);
+
+
                                 }
                             }
                         });
@@ -126,12 +134,13 @@ public class InboxPanel extends Composite {
             }
         });
     }
+
     private class AnswerClickHandler implements ClickHandler {
 
         public void onClick(ClickEvent event) {
 
-        answerBox.show();
-        answerBox.center();
+            answerBox.show();
+            answerBox.center();
 
 
         }

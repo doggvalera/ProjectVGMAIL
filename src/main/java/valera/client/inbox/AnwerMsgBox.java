@@ -32,6 +32,10 @@ public class AnwerMsgBox extends DialogBox implements HasText {
     public RichTextArea sendMailBox;
     @UiField
     public Button close;
+    @UiField
+    public Label labelSendName;
+    @UiField
+    public Label labelSendTheme;
 
 
     public String sendmail;
@@ -43,7 +47,7 @@ public class AnwerMsgBox extends DialogBox implements HasText {
 
     private static AnwerMsgBoxUiBinder uiBinder = GWT.create(AnwerMsgBoxUiBinder.class);
 
-    public AnwerMsgBox() {
+    public AnwerMsgBox(String name) {
 
 
 //            @Override
@@ -60,6 +64,8 @@ public class AnwerMsgBox extends DialogBox implements HasText {
         service = GWT.create(ValeraService.class);
         close.addClickHandler(new CloseClickHandler());
         sendMail.addClickHandler(new sendMailHandler());
+        nameMail.setText(name);
+
 
 
     }
