@@ -18,6 +18,7 @@ import valera.client.gui.IntroPanel;
 import valera.client.inbox.InboxPanel;
 import valera.client.newmail.MessegaFrame;
 import valera.client.sentMail.SentMail;
+//import valera.client.sentMail.SentMail;
 
 public class ValeraPanel extends Composite {
 

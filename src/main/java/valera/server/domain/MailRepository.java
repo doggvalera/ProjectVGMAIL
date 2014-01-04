@@ -30,4 +30,11 @@ public class MailRepository {
                 .setParameter("user", user)
                 .getResultList();
     }
+
+    public List<Mails> loadFrom (String user){
+        return em.createQuery("select m from Mails m where m.loginFrom =:user", Mails.class)
+                .setParameter("user", user)
+                .getResultList();
+
+    }
 }
