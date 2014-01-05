@@ -100,6 +100,8 @@ public class AnwerMsgBox extends DialogBox implements HasText {
 
         public void onClick(ClickEvent event) {
             hide();
+
+
         }
     }
 }

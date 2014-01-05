@@ -14,12 +14,13 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
 import valera.client.BaseCallback;
 import valera.server.domain.User;
-import valera.shared.ValeraService;
-import valera.shared.ValeraServiceAsync;
+
+import valera.shared.*;
 import valera.shared.model.CreateMail;
 
 public class NewMail extends Composite 	/* implements HasText, HasDirection  */ {
-    private ValeraServiceAsync service;
+
+   private SendMailServiceAsync serviceAsync;
     private static NewMailUiBinder uiBinder = GWT
             .create(NewMailUiBinder.class);
 
@@ -47,7 +48,8 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
 
 		
 		public NewMail(String question) {
-            service = GWT.create(ValeraService.class);
+          // service = GWT.create(ValeraService.class);
+            serviceAsync = GWT.create(SendMailService.class);
 			buildDisplay();
 
 
@@ -71,7 +73,7 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
 
         public void onClick(ClickEvent event) {
 
-            service.sendMailAuthor(new BaseCallback<String>() {
+            serviceAsync.sendMailAuthor(new BaseCallback<String>() {
                 @Override
                 public void onSuccess(String s) {
                     sendmail = s;
@@ -80,11 +82,14 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
                     String sendmailbox = sendMailBox.getText();
 
                     CreateMail crtml = new CreateMail(sendmail, namemail, themname, sendmailbox);
-                    service.sendMail(crtml, new BaseCallback<Boolean>() {
+                    serviceAsync.sendMail(crtml, new BaseCallback<Boolean>() {
 
                         @Override
                         public void onSuccess(Boolean aBoolean) {
                             System.out.println("all okey");
+                            nameMail.setText("Message has been sent");
+                            themName.setText("");
+                            sendMailBox.setText("");
                         }
                     });
                 }

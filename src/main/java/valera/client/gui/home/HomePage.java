@@ -11,7 +11,6 @@ import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.Window.ClosingEvent;
 import com.google.gwt.user.client.Window.ClosingHandler;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
@@ -117,7 +116,7 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
 //            service.loginEnter(login,password,new BaseCallback<Boolean>() {
 //                @Override
 //                public void onSuccess(Boolean userEnter) {
-//                    if ( userEnter==true) {  FlowControl.go(ValeraGmailMain.valeraPanel);} else System.out.println("user not created");
+//                    if ( userEnter==true) {  FlowControl.go(ValeraGmailMain.mainPanel);} else System.out.println("user not created");
 //
 //                }
 //            });
@@ -133,7 +132,7 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
                                 System.out.println(login);
                             }
                         });
-                        FlowControl.go(ValeraGmailMain.valeraPanel);
+                        FlowControl.go(ValeraGmailMain.mainPanel);
                     } else System.out.println("user not created");
 
                 }

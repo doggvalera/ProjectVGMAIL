@@ -11,18 +11,25 @@
            align-items: center;
             text-align: center;
             border: 1px solid black;
+
+
+        }
+        .panel
+        {
+            margin: 10px;
+            padding: 10px;
         }
 
     </ui:style>
 
-        <g:HTMLPanel>
+        <g:HTMLPanel styleName="{style.panel}">
 
 
             <br></br><b><center>Name:</center></b><br></br>
             <g:TextBox addStyleNames="{style.important}" ui:field="nameMail"></g:TextBox>
             <br></br><br><center><b>Theme:</b></center></br><br></br>
             <g:TextBox addStyleNames="{style.important}" ui:field="themName"></g:TextBox>
-            <br></br> <br>Text:</br><br></br>
+            <br></br> <br><center>Text:</center></br><br></br>
             <g:RichTextArea addStyleNames="{style.important}" ui:field="sendMailBox"></g:RichTextArea>
             <br></br><br></br>
             <g:Button addStyleNames="{style.important}" ui:field="sendMail">send</g:Button>

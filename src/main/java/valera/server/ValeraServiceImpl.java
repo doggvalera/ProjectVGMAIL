@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraService {
     UserRepository userRepositry = new UserRepository();
-    MailRepository mailRepository = new MailRepository();
+  MailRepository mailRepository = new MailRepository();
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
 
@@ -32,21 +32,21 @@ public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraSer
 //            }
 //        }
 //        return false;
-        boolean canRegistr = true;
+        boolean canRegistr = false;
         if (userRepositry.loginExis(user)) {
-            canRegistr = false;
+            canRegistr = true;
             System.out.println("userExists");
 
         }
         if (!userRepositry.checkLogin(user)) {
-            canRegistr = false;
+            canRegistr = true;
             System.out.println("wrong login");
         }
         if (canRegistr) {
             userRepositry.save(user);
-            return true;
-        } else
             return false;
+        } else
+            return true;
     }
 
 
@@ -98,7 +98,7 @@ public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraSer
 
         } else return false;
     }
-
+//
 
     @Override
     public UserRegistration getUserRegistration(String login, String name, String surname, String password) {

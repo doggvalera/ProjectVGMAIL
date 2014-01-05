@@ -1,5 +1,7 @@
 package valera.server.domain;
 
+import valera.shared.model.CreateMail;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.util.List;
@@ -36,5 +38,9 @@ public class MailRepository {
                 .setParameter("user", user)
                 .getResultList();
 
+    }
+    public boolean nameVerefication(CreateMail mail) {
+        if(mail.getLoginFrom() == null) { return false;}
+        else return true;
     }
 }

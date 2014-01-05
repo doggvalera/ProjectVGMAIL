@@ -20,7 +20,7 @@ import valera.client.newmail.MessegaFrame;
 import valera.client.sentMail.SentMail;
 //import valera.client.sentMail.SentMail;
 
-public class ValeraPanel extends Composite {
+public class MainPanel extends Composite {
 
     @UiField
     Panel exampleArea;
@@ -31,11 +31,11 @@ public class ValeraPanel extends Composite {
 
     private static ValeraPanelUiBinder uiBinder = GWT.create(ValeraPanelUiBinder.class);
 
-    interface ValeraPanelUiBinder extends UiBinder<Widget, ValeraPanel> {
+    interface ValeraPanelUiBinder extends UiBinder<Widget, MainPanel> {
     }
 
 
-    public ValeraPanel() {
+    public MainPanel() {
         initWidget(uiBinder.createAndBindUi(this));
 
         setWidgetToMaxWidthAndHeight();
@@ -66,8 +66,10 @@ public class ValeraPanel extends Composite {
 
 
     public void showSentMail() {
-        if (sentMail == null) sentMail = new SentMail();
-        setWidgetAsExample(sentMail);
+        if (sentMail == null) {sentMail = new SentMail();
+        setWidgetAsExample(sentMail);}
+        else {sentMail = new SentMail();
+            setWidgetAsExample(sentMail);}
 
     }
 
@@ -79,8 +81,10 @@ public class ValeraPanel extends Composite {
 
 
     public void showInbox() {
-        if (inboxMail == null) inboxMail = new InboxPanel("Question One");
-        setWidgetAsExample(inboxMail);
+        if (inboxMail == null) {inboxMail = new InboxPanel("Question One");
+        setWidgetAsExample(inboxMail);}
+        else {inboxMail = new InboxPanel("Question One");
+        setWidgetAsExample(inboxMail);}
 
     }
 
@@ -91,8 +95,11 @@ public class ValeraPanel extends Composite {
 
 
     public void showNewMail() {
-        if (newMail == null) newMail = new MessegaFrame();
-        setWidgetAsExample(newMail);
+        if (newMail == null) {newMail = new MessegaFrame();
+        setWidgetAsExample(newMail);} else{
+            newMail = new MessegaFrame();
+        setWidgetAsExample(newMail);}
+
     }
 
 

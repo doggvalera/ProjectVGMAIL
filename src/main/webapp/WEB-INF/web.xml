@@ -36,6 +36,19 @@
         <servlet-name>sentmailservice</servlet-name>
         <url-pattern>/valeragmailmain/sentmailservice</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>sendmailservice</servlet-name>
+        <servlet-class>valera.server.SendMailImpl</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>sendmailservice</servlet-name>
+        <url-pattern>/valeragmailmain/sendmailservice</url-pattern>
+    </servlet-mapping>
+
+
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

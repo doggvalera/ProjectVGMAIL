@@ -12,12 +12,12 @@ import valera.client.gui.home.HomePage;
  */
 public class ValeraGmailMain implements EntryPoint, ValueChangeHandler<String> {
 
-    public static ValeraPanel valeraPanel;
+    public static MainPanel mainPanel;
     HomePage homePage = new HomePage();
 
 
     public void onModuleLoad() {
-        valeraPanel = new ValeraPanel();
+        mainPanel = new MainPanel();
         RootPanel.get().add(homePage, 0, 0);
         setUpHistoryManagement();
     }
@@ -38,10 +38,10 @@ public class ValeraGmailMain implements EntryPoint, ValueChangeHandler<String> {
         //showHomePage();
         // Else check what the token is and call the appropriate method.
         else if (page.equals(HistoryT.SENTMAIL))
-            valeraPanel.showSentMail();
+            mainPanel.showSentMail();
         else if (page.equals(HistoryT.NEWMAIL))
-            valeraPanel.showNewMail();
+            mainPanel.showNewMail();
         else if (page.equals(HistoryT.INBOX))
-            valeraPanel.showInbox();
+            mainPanel.showInbox();
     }
 }

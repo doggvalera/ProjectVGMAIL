@@ -24,13 +24,15 @@ import valera.shared.model.CreateMail;
 import java.util.List;
 
 
-public class SentMail extends Composite {
+public class SentMail extends Composite  {
 
 
     private InboxServiceAsync service = GWT.create(InboxService.class);
     private ValeraServiceAsync serviceAsync= GWT.create(ValeraService.class);
     private SentMailServiceAsync serviceSent = GWT.create(SentMailService.class);
     private static SentMailUiBinder uiBinder = GWT.create(SentMailUiBinder.class);
+
+
 
     // private AnwerMsgBox answerBox = new AnwerMsgBox();
     interface SentMailUiBinder extends UiBinder<Widget, SentMail> {
@@ -104,7 +106,7 @@ public class SentMail extends Composite {
                                     mailTextArea.setText(selected.getTextMail());
                                     name = (selected.getLoginFrom());
 
-
+                                    System.out.println(name + "blat");
                                     //nameMail.setText(name);
 
 
@@ -113,10 +115,16 @@ public class SentMail extends Composite {
                         });
                     }
                 });
+                System.out.println(name + "blat");
                 cellTable.setWidth("100%", true);
                 cellTable.setPageSize(15);
 
+
                 pager.setDisplay(cellTable);
+                answerBox.nameMail.setText(name);
+
+
+
             }
         });
     }
@@ -124,7 +132,7 @@ public class SentMail extends Composite {
     private class AnswerClickHandler implements ClickHandler {
 
         public void onClick(ClickEvent event) {
-
+            answerBox.nameMail.setText(name);
             answerBox.show();
             answerBox.center();
 
