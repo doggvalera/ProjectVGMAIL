@@ -14,10 +14,13 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.datepicker.client.DateBox;
 import valera.client.gui.IntroPanel;
 import valera.client.inbox.InboxPanel;
 import valera.client.newmail.MessegaFrame;
 import valera.client.sentMail.SentMail;
+
+import java.util.Date;
 //import valera.client.sentMail.SentMail;
 
 public class MainPanel extends Composite {
@@ -42,6 +45,7 @@ public class MainPanel extends Composite {
         Window.addResizeHandler(resizeHandler);
         IntroPanel introPanel = new IntroPanel();
         setWidgetAsExample(introPanel);
+
     }
 
 
@@ -112,5 +116,6 @@ public class MainPanel extends Composite {
         exampleArea.clear();
         exampleArea.add(widget);
     }
+
 
 }

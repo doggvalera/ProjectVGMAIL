@@ -102,6 +102,7 @@
                 <g:HTML styleName="{style.divider}" />
 				<g:Button addStyleNames="{style.button}" ui:field="newmail">New Mail</g:Button>
                 <g:HTML styleName="{style.divider}" />
+
  				
 			
 			</g:FlowPanel>

@@ -12,11 +12,15 @@ import com.google.gwt.i18n.client.HasDirection.Direction;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.datepicker.client.DateBox;
+import com.google.gwt.user.datepicker.client.DatePicker;
 import valera.client.BaseCallback;
 import valera.server.domain.User;
 
 import valera.shared.*;
 import valera.shared.model.CreateMail;
+
+import java.util.Date;
 
 public class NewMail extends Composite 	/* implements HasText, HasDirection  */ {
 
@@ -39,7 +43,12 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
     @UiField
     public RichTextArea sendMailBox;
 
+    @UiField
+    public VerticalPanel vPanelDt;
+    @UiField
+    public TextBox timeDate;
 
+    public DateBox dtBx = new DateBox();
 
    public String sendmail;
 		protected Direction dir = Direction.DEFAULT;
@@ -55,7 +64,13 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
 
 
             initWidget(uiBinder.createAndBindUi(this));
-            //this.getElement().getStyle()
+            vPanelDt.add(dtBx);
+            Date date = new Date();
+            dtBx.setValue(date);
+//            Date date = new Date();
+//            timeDate.setText(String.valueOf(date));
+//
+//
                    // .setProperty("border", "solid 1px");
             sendMail.addClickHandler(new sendMailHandler());
 
@@ -66,13 +81,12 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
 		private void buildDisplay() {
 
 
-
         }
 
     private class sendMailHandler implements ClickHandler {
 
         public void onClick(ClickEvent event) {
-
+            Date dateReg = new Date();
             serviceAsync.sendMailAuthor(new BaseCallback<String>() {
                 @Override
                 public void onSuccess(String s) {

@@ -36,6 +36,8 @@
             <g:RichTextArea addStyleNames="{style.important}" ui:field="sendMailBox"></g:RichTextArea>
             <br></br><br></br>
             <g:Button addStyleNames="{style.important}" ui:field="sendMail">send</g:Button>
+             <g:VerticalPanel ui:field="vPanelDt"></g:VerticalPanel>
+            <g:TextBox ui:field="timeDate"></g:TextBox>
         </g:HTMLPanel>
 
 </ui:UiBinder>
