@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraService {
     UserRepository userRepositry = new UserRepository();
-  MailRepository mailRepository = new MailRepository();
+    MailRepository mailRepository = new MailRepository();
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
 
@@ -33,20 +33,33 @@ public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraSer
 //        }
 //        return false;
         boolean canRegistr = false;
-        if (userRepositry.loginExis(user)) {
-            canRegistr = true;
+       // boolean canRegistr2 = false;
+        if (!userRepositry.loginExis(user)) {
+               // canRegistr2 = true;
             System.out.println("userExists");
 
+            if (userRepositry.checkLogin(user)) {
+
+                System.out.println("wrong login");
+                if (userRepositry.passwordVerif(user)){
+                    canRegistr = true;
+                }
+
+            }
+
         }
-        if (!userRepositry.checkLogin(user)) {
-            canRegistr = true;
-            System.out.println("wrong login");
-        }
-        if (canRegistr) {
+//        if (userRepositry.checkLogin(user)) {
+//            canRegistr = true;
+//            System.out.println("wrong login");
+//
+//        }
+//&& canRegistr2==true
+
+        if (canRegistr == true ) {
             userRepositry.save(user);
-            return false;
-        } else
             return true;
+        } else
+            return false;
     }
 
 

@@ -7,6 +7,10 @@
         .important {
         font-weight: bold;
             align-items: center;
+            font: 100% georgia, sans-serif;
+
+
+
         }
 
         .panel {

@@ -10,11 +10,11 @@
 <ui:style>
     .button {
         width: 100%;
-        -webkit-border-top-left-radius: 0px;
-        -webkit-border-top-right-radius: 0px;
-        -webkit-border-bottom-right-radius: 0px;
-        -webkit-border-bottom-left-radius: 0px;
-        background: linear-gradient(to right, lightblue, deepskyblue);
+        -webkit-border-top-left-radius: 10px;
+        -webkit-border-top-right-radius: 10px;
+        -webkit-border-bottom-right-radius: 10px;
+        -webkit-border-bottom-left-radius: 10px;
+        background: linear-gradient(to right, #d6dbca, #d8decd);
         border: 0px;
 
     }
@@ -26,7 +26,7 @@
     }
 
     .title {
-        font-family: Verdana, sans-serif;
+        font: 100% Savoye LET, sans-serif;
         color: #ffffff;
         font-weight: bold;
         font-size: 16px;
@@ -34,9 +34,9 @@
         padding: 5px 0;
         -webkit-border-top-left-radius: 20px;
         -webkit-border-top-right-radius: 20px;
-        /*-webkit-border-bottom-right-radius: 20px;*/
-        /*-webkit-border-bottom-left-radius: 20px;*/
-        background: linear-gradient(to right, lightblue, deepskyblue);
+        -webkit-border-bottom-right-radius: 20px;
+        -webkit-border-bottom-left-radius: 20px;
+        background: linear-gradient(to right, #d6dbca, #d8decd);
 
     }
 
@@ -51,7 +51,7 @@
 
     .divider {
         height: 10px;
-        background: white;
+        background: #e6eee9;
 
     }
 
@@ -64,7 +64,7 @@
     }
 
     .logo {
-        background-color: #ffffff;
+        background: #e6eee9;
         height: 100;
         weight: 100;
     }
@@ -73,11 +73,15 @@
         height: 100px;
         weight: 100px;
     }
+
+    .panelback {
+        background: #e6eee9;
+    }
 </ui:style>
 
 <ui:with field='res' type='valera.client.MainPanel.Resources'/>
 
-<g:DockLayoutPanel unit="PX">
+<g:DockLayoutPanel unit="PX" styleName="{style.panelback}">
 	<g:west size="180">
 		<g:ScrollPanel>
 			<g:FlowPanel addStyleNames="{style.navPanel}">
@@ -87,13 +91,17 @@
                     </a>
                 </g:HTMLPanel>
 				<g:Label addStyleNames="{style.title}">VGmail</g:Label>
-				<!--<g:HTML styleName="{style.divider}" />-->
+				<g:HTML styleName="{style.divider}" />
 				<g:Button addStyleNames="{style.button}" ui:field="introPanel">Main</g:Button>
-
-				<g:Button addStyleNames="{style.button}" ui:field="sentmail">Sent Mail</g:Button>				
+                <g:HTML styleName="{style.divider}" />
+				<g:Button addStyleNames="{style.button}" ui:field="sentmail">Sent Mail</g:Button>
+                <g:HTML styleName="{style.divider}" />
 				<g:Button addStyleNames="{style.button}" ui:field="inbox">Inbox</g:Button>
+                <g:HTML styleName="{style.divider}" />
 				<g:Button addStyleNames="{style.button}" ui:field="composite">Notes</g:Button>
+                <g:HTML styleName="{style.divider}" />
 				<g:Button addStyleNames="{style.button}" ui:field="newmail">New Mail</g:Button>
+                <g:HTML styleName="{style.divider}" />
  				
 			
 			</g:FlowPanel>

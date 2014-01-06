@@ -64,4 +64,11 @@ public class UserRepository {
 
     }
 
+    public boolean passwordVerif(User user) {
+        String password = user.getPassword();
+        if (password!=null && password.length()>4){
+            return true;
+        }return false;
+    }
+
 }

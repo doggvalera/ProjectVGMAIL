@@ -11,6 +11,11 @@
 
         .panel {
             overflow:scroll;
+            font: 100% georgia, sans-serif;
+            -webkit-border-top-left-radius: 20px;
+            -webkit-border-top-right-radius: 20px;
+            -webkit-border-bottom-right-radius: 20px;
+            -webkit-border-bottom-left-radius: 20px;
         }
 
         .richText{

@@ -8,16 +8,19 @@
             font-weight: bold;
             text-align: center;
             overflow: auto;
-           align-items: center;
+            align-items: center;
             text-align: center;
             border: 1px solid black;
-
+            font: 75% georgia, sans-serif;
 
         }
-        .panel
-        {
+
+        .panel {
             margin: 10px;
             padding: 10px;
+            background: #f1f3ec;
+            font: 100% georgia, sans-serif;
+
         }
 
     </ui:style>
@@ -25,7 +28,7 @@
         <g:HTMLPanel styleName="{style.panel}">
 
 
-            <br></br><b><center>Name:</center></b><br></br>
+            <br></br><b><center>  Name:</center></b><br></br>
             <g:TextBox addStyleNames="{style.important}" ui:field="nameMail"></g:TextBox>
             <br></br><br><center><b>Theme:</b></center></br><br></br>
             <g:TextBox addStyleNames="{style.important}" ui:field="themName"></g:TextBox>
