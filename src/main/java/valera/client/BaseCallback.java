@@ -10,5 +10,6 @@ public abstract class BaseCallback<T> implements AsyncCallback<T> {
 
     public void onFailure(Throwable ignored) {
         GWT.log(ignored.getLocalizedMessage());
+
     }
 }
