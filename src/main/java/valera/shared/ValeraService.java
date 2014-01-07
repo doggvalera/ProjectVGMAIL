@@ -19,7 +19,7 @@ public interface ValeraService extends RemoteService {
 
     public boolean isAutorized();
 
-    public boolean sendMail(CreateMail mail);
+   // public boolean sendMail(CreateMail mail);
 
     public String sendMailAuthor();
 

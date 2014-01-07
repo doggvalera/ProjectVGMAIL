@@ -2,14 +2,11 @@ package valera.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import valera.server.domain.MailRepository;
-import valera.server.domain.Mails;
 import valera.server.domain.User;
 import valera.server.domain.UserRepository;
 import valera.shared.ValeraService;
-import valera.shared.model.CreateMail;
 import valera.shared.model.UserRegistration;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.logging.Logger;
@@ -25,37 +22,25 @@ public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraSer
         logger.info("Test");
 
         User user = new User(userRegistration);
-//        boolean canRegistr = !userRepositry.loginExis(user);
-//        if (canRegistr == true) {
-//            if (userRepositry.checkLogin(user) != true) {
-//                userRepositry.save(user);
-//            }
-//        }
-//        return false;
+//
         boolean canRegistr = false;
-       // boolean canRegistr2 = false;
+
         if (!userRepositry.loginExis(user)) {
-               // canRegistr2 = true;
+
             System.out.println("userExists");
 
             if (userRepositry.checkLogin(user)) {
 
                 System.out.println("wrong login");
-                if (userRepositry.passwordVerif(user)){
+                if (userRepositry.passwordVerif(user)) {
                     canRegistr = true;
                 }
 
             }
 
         }
-//        if (userRepositry.checkLogin(user)) {
-//            canRegistr = true;
-//            System.out.println("wrong login");
-//
-//        }
-//&& canRegistr2==true
 
-        if (canRegistr == true ) {
+        if (canRegistr == true) {
             userRepositry.save(user);
             return true;
         } else
@@ -101,17 +86,17 @@ public class ValeraServiceImpl extends RemoteServiceServlet implements ValeraSer
     }
 
 
-    @Override
-    public boolean sendMail(CreateMail mail) {
-        Mails mails = new Mails(mail);
-        if (mail.getLoginTo() != null) {
-
-            mailRepository.save(mails);
-            return true;
-
-        } else return false;
-    }
+//    @Override
+//    public boolean sendMail(CreateMail mail) {
+//        Mails mails = new Mails(mail);
+//        if (mail.getLoginTo() != null) {
 //
+//            mailRepository.save(mails);
+//            return true;
+//
+//        } else return false;
+//    }
+////
 
     @Override
     public UserRegistration getUserRegistration(String login, String name, String surname, String password) {

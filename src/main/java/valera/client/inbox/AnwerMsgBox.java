@@ -10,15 +10,19 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
 import valera.client.BaseCallback;
+import valera.shared.SendMailService;
+import valera.shared.SendMailServiceAsync;
 import valera.shared.ValeraService;
 import valera.shared.ValeraServiceAsync;
 import valera.shared.model.CreateMail;
+
+import java.util.Date;
 
 /**
  * Created by valerijszemlanikins on 27.12.13.
  */
 public class AnwerMsgBox extends DialogBox implements HasText {
-    private ValeraServiceAsync service;
+    private SendMailServiceAsync service;
 
     @UiField
     public Button sendMail;
@@ -61,7 +65,7 @@ public class AnwerMsgBox extends DialogBox implements HasText {
         setWidget(uiBinder.createAndBindUi(this));
 
 
-        service = GWT.create(ValeraService.class);
+        service = GWT.create(SendMailService.class);
         close.addClickHandler(new CloseClickHandler());
         sendMail.addClickHandler(new sendMailHandler());
         nameMail.setText(name);
@@ -82,8 +86,9 @@ public class AnwerMsgBox extends DialogBox implements HasText {
                     String namemail = nameMail.getText();
                     String themname = themName.getText();
                     String sendmailbox = sendMailBox.getText();
+                    Date date = new Date();
 
-                    CreateMail crtml = new CreateMail(sendmail, namemail, themname, sendmailbox);
+                    CreateMail crtml = new CreateMail(sendmail, namemail, themname, sendmailbox, date);
                     service.sendMail(crtml, new BaseCallback<Boolean>() {
 
                         @Override

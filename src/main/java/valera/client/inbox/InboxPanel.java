@@ -93,6 +93,21 @@ public class InboxPanel extends Composite {
             }
         }, "Sent To");
 
+        cellTable.addColumn(new TextColumn<CreateMail>() {
+            @Override
+            public String getValue(CreateMail object) {
+                return object.getTheme();
+            }
+        }, "Theme");
+
+        cellTable.addColumn(new TextColumn<CreateMail>() {
+            @Override
+            public String getValue(CreateMail object) {
+                Date v = object.getDateField();
+                return v.toString();
+            }
+        }, "Date");
+
 
         //
 
