@@ -33,7 +33,8 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
                 System.out.println("wrong login");
                 if (userRepositry.passwordVerif(user)) {
                     if(userRepositry.loginVerif(user)){
-                        canRegistr = true;
+                        if(user.getPassword()==user.getPasswordRpt()){
+                        canRegistr = true;}
                     }
 
                 }
@@ -90,7 +91,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 
 
     @Override
-    public UserRegistration getUserRegistration(String login, String name, String surname, String password) {
+    public UserRegistration getUserRegistration(String login, String name, String surname, String password,String passwordRpt) {
 
         User u = userRepositry.loadById(1);
 
@@ -100,12 +101,13 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
         e.setName(surname);
         e.setSurname(surname);
         e.setPassword(password);
+        e.setPasswordRpt(passwordRpt);
 
-        System.out.println(login);
-        System.out.println(name);
-        System.out.println(surname);
-        System.out.println(password);
-        System.out.println(u);
+//        System.out.println(login);
+//        System.out.println(name);
+//        System.out.println(surname);
+//        System.out.println(password);
+//        System.out.println(u);
         return e;
     }
 }

@@ -62,6 +62,8 @@ public class RegestrationBox extends DialogBox implements HasText {
     Label passwordLabelRepeat;
     @UiField
     Button closeBtn;
+    @UiField
+    Label error;
     //	this.registerNew.addClickHandler(new RegisterNewCkickHandler());
 
     private class RegisterClickHandler implements ClickHandler {
@@ -71,10 +73,10 @@ public class RegestrationBox extends DialogBox implements HasText {
                     String login1 = login.getText();
                     String surname1 = surname.getText();
                     String password1 = password.getText();
-                    
+                    String passwordRepat = passwordRepeat.getText();
 
 
-            UserRegistration reg = new UserRegistration(name1, login1, surname1, password1);
+            UserRegistration reg = new UserRegistration(name1, login1, surname1, password1, passwordRepat);
 
             service.register(reg, new BaseCallback<Boolean>() {
                 @Override
@@ -84,8 +86,12 @@ public class RegestrationBox extends DialogBox implements HasText {
                     name.setText("");
                     login.setText("");
                     surname.setText("");
-                    password.setText("");}
-                    else {name.setText("error");}
+                    password.setText("");
+                    passwordRepeat.setText("");
+                        error.setVisible(false);
+                    }
+                    else {error.setText("Error");
+                    error.setVisible(true);}
                 }
             });
         }

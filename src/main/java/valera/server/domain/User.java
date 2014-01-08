@@ -19,6 +19,8 @@ public class User implements Serializable {
     private String surname;
     //    @Transient
     private String password;
+    @Transient
+    private String passwordRpt;
 
     public User() {
     }
@@ -28,7 +30,16 @@ public class User implements Serializable {
         name = userRegistration.getName();
         surname = userRegistration.getSurname();
         password = userRegistration.getPassword();
+       passwordRpt = userRegistration.getPasswordRpt();
 
+    }
+
+    public String getPasswordRpt() {
+        return passwordRpt;
+    }
+
+    public void setPasswordRpt(String passwordRpt) {
+        this.passwordRpt = passwordRpt;
     }
 
     public int getId() {

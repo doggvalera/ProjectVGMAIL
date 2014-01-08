@@ -9,7 +9,7 @@ import valera.shared.model.UserRegistration;
 @RemoteServiceRelativePath("valeraservice")
 public interface UserService extends RemoteService {
 
-    UserRegistration getUserRegistration(String login, String name, String surname, String password);
+    UserRegistration getUserRegistration(String login, String name, String surname, String password, String passwordReapet);
 
     boolean register(UserRegistration userRegistration);
 

@@ -20,6 +20,7 @@ import valera.client.inbox.AnwerMsgBox;
 import valera.shared.*;
 import valera.shared.model.CreateMail;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -79,6 +80,20 @@ public class SentMail extends Composite  {
                 return object.getLoginFrom();
             }
         }, "Sent To");
+        cellTable.addColumn(new TextColumn<CreateMail>() {
+            @Override
+            public String getValue(CreateMail object) {
+                return object.getTheme();
+            }
+        }, "Theme");
+
+        cellTable.addColumn(new TextColumn<CreateMail>() {
+            @Override
+            public String getValue(CreateMail object) {
+                Date v = object.getDateField();
+                return v.toString();
+            }
+        }, "Date");
 
 
         //
@@ -103,10 +118,9 @@ public class SentMail extends Composite  {
                                 if (selected != null) {
                                     //Window.alert("You selected: " + selected.getTextMail());
                                     mailTextArea.setText(selected.getTextMail());
-                                    name = (selected.getLoginFrom());
+                                    //name = (selected.getLoginFrom());
 
-                                    System.out.println(name + "blat");
-                                    //nameMail.setText(name);
+                                    answerBox.sendMailBox.setText(selected.getTextMail());
 
 
                                 }
@@ -120,7 +134,8 @@ public class SentMail extends Composite  {
 
 
                 pager.setDisplay(cellTable);
-                answerBox.nameMail.setText(name);
+
+
 
 
 
@@ -131,7 +146,7 @@ public class SentMail extends Composite  {
     private class AnswerClickHandler implements ClickHandler {
 
         public void onClick(ClickEvent event) {
-            answerBox.nameMail.setText(name);
+
             answerBox.show();
             answerBox.center();
 

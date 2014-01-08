@@ -129,7 +129,7 @@ public class InboxPanel extends Composite {
                                     mailTextArea.setText(selected.getTextMail());
                                     name = (selected.getLoginFrom());
 
-                                  answerBox.sendMailBox.setText(selected.getTextMail());
+                                  answerBox.nameMail.setText(selected.getLoginTo());
                                     //nameMail.setText(name);
 
 

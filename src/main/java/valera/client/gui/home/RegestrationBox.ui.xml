@@ -11,10 +11,17 @@
             background: #f1f3ec;
             font: 100% georgia, sans-serif;
         }
+
+        .errorlbl{
+            color: red;
+        }
     </ui:style>
     <g:HTMLPanel>
 
         <g:VerticalPanel styleName="{style.panel}" ui:field="vPanelReg">
+
+            <g:Label styleName="{style.errorlbl}" ui:field="error"></g:Label>
+
             <g:Label styleName="{style.important}" ui:field="loginLabel">Login</g:Label>
             <g:TextBox styleName="{style.important}" ui:field="name"></g:TextBox>
 
