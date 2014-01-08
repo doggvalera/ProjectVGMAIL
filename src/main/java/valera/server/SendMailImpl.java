@@ -1,9 +1,7 @@
 package valera.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import valera.server.domain.MailRepository;
-import valera.server.domain.Mails;
-import valera.server.domain.User;
+import valera.server.domain.*;
 import valera.shared.SendMailService;
 import valera.shared.model.CreateMail;
 
@@ -14,7 +12,8 @@ import javax.servlet.http.HttpSession;
 * Created by valerijszemlanikins on 05.01.14.
 */
 public class SendMailImpl extends RemoteServiceServlet implements SendMailService {
-    MailRepository mailRepository = new MailRepository();
+
+    MessageRepository mailRepository = new MessageRepository();
     @Override
     public String sendMailAuthor() {
         HttpServletRequest request = getThreadLocalRequest();
@@ -28,16 +27,16 @@ public class SendMailImpl extends RemoteServiceServlet implements SendMailServic
 
     @Override
     public boolean sendMail(CreateMail mail) {
-        Mails mails = new Mails(mail);
+        Messages mails = new Messages(mail);
 
-boolean sendMails = false;
-       // if (mail.getLoginTo() != null && mail.getLoginFrom() != null) {
-if(mailRepository.nameVerefication(mail) == true){
+            if  (mailRepository.nameVerefiaction(mails)==true){
             mailRepository.save(mails);
 
-             sendMails = true;
+            return true;
+            }
+            else
+                return false;
 
-        } else sendMails =  false;
-        return sendMails;
+//
     }
 }
