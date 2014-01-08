@@ -7,6 +7,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.i18n.client.HasDirection;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import valera.client.BaseCallback;
 import valera.shared.SendMailService;
@@ -14,6 +15,7 @@ import valera.shared.SendMailServiceAsync;
 import valera.shared.model.CreateMail;
 
 import java.util.Date;
+import java.util.Timer;
 
 /**
  * Created by valerijszemlanikins on 27.12.13.
@@ -37,7 +39,8 @@ public class AnwerMsgBox extends DialogBox implements HasText {
     public Label labelSendName;
     @UiField
     public Label labelSendTheme;
-
+    @UiField
+    public Label error;
 
     public String sendmail;
     protected HasDirection.Direction dir = HasDirection.Direction.DEFAULT;
@@ -90,7 +93,17 @@ public class AnwerMsgBox extends DialogBox implements HasText {
 
                         @Override
                         public void onSuccess(Boolean aBoolean) {
-                            System.out.println("all okey");
+                            if (aBoolean == true){
+                           nameMail.setText("");
+                            themName.setText("");
+                            sendMailBox.setText("");
+                                error.setText("Message has been send");
+                            }
+                            else {
+                                error.setText("Error Namefield empty");
+                                error.setVisible(true);
+                            }
+
                         }
                     });
                 }

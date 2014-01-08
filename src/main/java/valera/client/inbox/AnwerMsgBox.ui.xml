@@ -16,10 +16,14 @@
         .panel {
         background-color: ivory;
         }
+        .errorlbl{
+            color: red;
+        }
         </ui:style>
         <g:HTMLPanel>
 
             <g:VerticalPanel styleName="{style.panel}" ui:field="vPanelReg">
+                <g:Label styleName="{style.errorlbl}" ui:field="error"></g:Label>
                 <g:Label ui:field="labelSendName">Name:</g:Label>
                 <g:TextBox styleName="{style.important}" ui:field="nameMail"></g:TextBox>
                 <g:Label ui:field="labelSendTheme">Theme:</g:Label>
