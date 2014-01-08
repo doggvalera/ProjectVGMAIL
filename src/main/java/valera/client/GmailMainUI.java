@@ -10,7 +10,7 @@ import valera.client.gui.home.HomePage;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-public class ValeraGmailMain implements EntryPoint, ValueChangeHandler<String> {
+public class GmailMainUI implements EntryPoint, ValueChangeHandler<String> {
 
     public static MainPanel mainPanel;
     HomePage homePage = new HomePage();

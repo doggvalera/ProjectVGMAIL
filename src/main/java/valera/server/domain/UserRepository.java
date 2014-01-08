@@ -69,6 +69,15 @@ public class UserRepository {
         if (password!=null && password.length()>4){
             return true;
         }return false;
+
+
+    }
+    public boolean loginVerif(User user){
+        String login = user.getLogin();
+        if (login!=null && login.length()>4){
+            return true;
+        }
+        return false;
     }
 
 }

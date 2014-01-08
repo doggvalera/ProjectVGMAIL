@@ -9,7 +9,7 @@
     <!-- Servlets -->
   <servlet>
     <servlet-name>valeraservice</servlet-name>
-    <servlet-class>valera.server.ValeraServiceImpl</servlet-class>
+    <servlet-class>valera.server.UserServiceImpl</servlet-class>
   </servlet>
 
   <servlet-mapping>

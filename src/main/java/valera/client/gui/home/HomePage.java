@@ -21,12 +21,12 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import valera.client.BaseCallback;
 import valera.client.FlowControl;
-import valera.client.ValeraGmailMain;
-import valera.shared.ValeraService;
-import valera.shared.ValeraServiceAsync;
+import valera.client.GmailMainUI;
+import valera.shared.UserService;
+import valera.shared.UserServiceAsync;
 
 public class HomePage extends Composite implements ValueChangeHandler<String> {
-    private ValeraServiceAsync service;
+    private UserServiceAsync service;
 
 //	private DialogBox dialogBoxRegistration = new DialogBox();
 
@@ -54,7 +54,7 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
 
         initWidget(uiBinder.createAndBindUi(this));
 
-        service = GWT.create(ValeraService.class);
+        service = GWT.create(UserService.class);
         loginEnter.addClickHandler(new LoginEnterClickHandler());
         button.addClickHandler(new RegisterNewCkickHandler());
 //		this.dialogBoxRegistration.add(vPanel);
@@ -116,7 +116,7 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
 //            service.loginEnter(login,password,new BaseCallback<Boolean>() {
 //                @Override
 //                public void onSuccess(Boolean userEnter) {
-//                    if ( userEnter==true) {  FlowControl.go(ValeraGmailMain.mainPanel);} else System.out.println("user not created");
+//                    if ( userEnter==true) {  FlowControl.go(GmailMainUI.mainPanel);} else System.out.println("user not created");
 //
 //                }
 //            });
@@ -132,7 +132,7 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
                                 System.out.println(login);
                             }
                         });
-                        FlowControl.go(ValeraGmailMain.mainPanel);
+                        FlowControl.go(GmailMainUI.mainPanel);
                     } else System.out.println("user not created");
 
                 }

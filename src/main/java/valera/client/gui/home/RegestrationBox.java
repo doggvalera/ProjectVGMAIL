@@ -14,14 +14,12 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import valera.client.BaseCallback;
-import valera.shared.ValeraService;
-import valera.shared.ValeraServiceAsync;
+import valera.shared.UserService;
+import valera.shared.UserServiceAsync;
 import valera.shared.model.UserRegistration;
 
-import javax.inject.Inject;
-
 public class RegestrationBox extends DialogBox implements HasText {
-    private ValeraServiceAsync service;
+    private UserServiceAsync service;
     private static RegestrationBoxUiBinder uiBinder = GWT
             .create(RegestrationBoxUiBinder.class);
 
@@ -32,7 +30,7 @@ public class RegestrationBox extends DialogBox implements HasText {
         setWidget(uiBinder.createAndBindUi(this));
 
         setWidget(uiBinder.createAndBindUi(this));
-        service = GWT.create(ValeraService.class);
+        service = GWT.create(UserService.class);
 
         this.registerNew.addClickHandler(new RegisterClickHandler());
         this.closeBtn.addClickHandler(new CloseHandler());
@@ -73,6 +71,7 @@ public class RegestrationBox extends DialogBox implements HasText {
                     String login1 = login.getText();
                     String surname1 = surname.getText();
                     String password1 = password.getText();
+                    
 
 
             UserRegistration reg = new UserRegistration(name1, login1, surname1, password1);

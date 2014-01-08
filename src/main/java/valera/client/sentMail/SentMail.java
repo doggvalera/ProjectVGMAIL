@@ -11,7 +11,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.SimplePager;
 import com.google.gwt.user.cellview.client.TextColumn;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.SelectionChangeEvent;
@@ -28,7 +27,7 @@ public class SentMail extends Composite  {
 
 
     private InboxServiceAsync service = GWT.create(InboxService.class);
-    private ValeraServiceAsync serviceAsync= GWT.create(ValeraService.class);
+    private UserServiceAsync serviceAsync= GWT.create(UserService.class);
     private SentMailServiceAsync serviceSent = GWT.create(SentMailService.class);
     private static SentMailUiBinder uiBinder = GWT.create(SentMailUiBinder.class);
 

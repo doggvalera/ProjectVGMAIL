@@ -2,7 +2,6 @@ package valera.client.inbox;
 
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.i18n.client.HasDirection;
@@ -12,8 +11,6 @@ import com.google.gwt.user.client.ui.*;
 import valera.client.BaseCallback;
 import valera.shared.SendMailService;
 import valera.shared.SendMailServiceAsync;
-import valera.shared.ValeraService;
-import valera.shared.ValeraServiceAsync;
 import valera.shared.model.CreateMail;
 
 import java.util.Date;
