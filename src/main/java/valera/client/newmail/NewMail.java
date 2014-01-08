@@ -57,7 +57,7 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
 
 		
 		public NewMail(String question) {
-          // service = GWT.create(ValeraService.class);
+          // service = GWT.create(UserService.class);
             serviceAsync = GWT.create(SendMailService.class);
 			buildDisplay();
 
@@ -67,11 +67,7 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
             vPanelDt.add(dtBx);
             Date date = new Date();
             dtBx.setValue(date);
-//            Date date = new Date();
-//            timeDate.setText(String.valueOf(date));
 //
-//
-                   // .setProperty("border", "solid 1px");
             sendMail.addClickHandler(new sendMailHandler());
 
 
@@ -86,7 +82,7 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
     private class sendMailHandler implements ClickHandler {
 
         public void onClick(ClickEvent event) {
-            Date dateReg = new Date();
+//            Date dateReg = new Date();
             serviceAsync.sendMailAuthor(new BaseCallback<String>() {
                 @Override
                 public void onSuccess(String s) {
@@ -94,16 +90,20 @@ public class NewMail extends Composite 	/* implements HasText, HasDirection  */ 
                     String namemail = nameMail.getText();
                     String themname = themName.getText();
                     String sendmailbox = sendMailBox.getText();
+                    Date date = new Date();
 
-                    CreateMail crtml = new CreateMail(sendmail, namemail, themname, sendmailbox);
+                    CreateMail crtml = new CreateMail(sendmail, namemail, themname, sendmailbox,date);
                     serviceAsync.sendMail(crtml, new BaseCallback<Boolean>() {
 
                         @Override
                         public void onSuccess(Boolean aBoolean) {
+                            if(aBoolean==true){
                             System.out.println("all okey");
-                            nameMail.setText("Message has been sent");
+                            nameMail.setText("Messages has been sent");
                             themName.setText("");
-                            sendMailBox.setText("");
+                            sendMailBox.setText("");}
+
+                            else  { nameMail.setText("Messages has not been sent"); }
                         }
                     });
                 }
