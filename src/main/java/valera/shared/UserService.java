@@ -2,11 +2,13 @@ package valera.shared;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import com.google.gwt.user.server.rpc.XsrfProtect;
 import valera.server.domain.User;
 import valera.shared.model.CreateMail;
 import valera.shared.model.UserRegistration;
 
 @RemoteServiceRelativePath("valeraservice")
+@XsrfProtect
 public interface UserService extends RemoteService {
 
     UserRegistration getUserRegistration(String login, String name, String surname, String password, String passwordReapet);
