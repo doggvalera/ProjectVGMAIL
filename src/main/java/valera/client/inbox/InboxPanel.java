@@ -58,6 +58,7 @@ public class InboxPanel extends Composite {
     RichTextArea mailTextArea;
     @UiField
     Button answerButton;
+
     public String name;
     AnwerMsgBox answerBox = new AnwerMsgBox(name);
     public String sendmail;
@@ -122,6 +123,7 @@ public class InboxPanel extends Composite {
                         dataProvider.getList().addAll(result);
                         dataProvider.addDataDisplay(cellTable);
 
+
                         final SingleSelectionModel<CreateMail> selectionModel = new SingleSelectionModel<CreateMail>();
                         cellTable.setSelectionModel(selectionModel);
                         selectionModel.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
@@ -160,6 +162,9 @@ public class InboxPanel extends Composite {
 
         }
     }
+
+
+
 
     public HandlerRegistration addMouseOverHandler(MouseOverHandler handler) {
         return addDomHandler(handler, MouseOverEvent.getType());

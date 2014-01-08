@@ -34,7 +34,7 @@
             <g:Label styleName="{style.important}" ui:field="passwordLabelRepeat">Password repeat</g:Label>
             <g:PasswordTextBox styleName="{style.important}" ui:field="passwordRepeat"></g:PasswordTextBox>
             <g:Button styleName="{style.important}" ui:field="registerNew">Registration</g:Button>
-
+            <g:Button styleName="{style.important}" ui:field="closeBtn">Close</g:Button>
 
         </g:VerticalPanel>
     </g:HTMLPanel>

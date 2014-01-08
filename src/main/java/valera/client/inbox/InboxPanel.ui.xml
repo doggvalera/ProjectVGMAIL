@@ -37,6 +37,7 @@
             <c:SimplePager ui:field='pager'/>
             <g:RichTextArea styleName="{style.richText}" ui:field="mailTextArea"/>
             <g:Button styleName="{style.button}" ui:field="answerButton">Answer</g:Button>
+
         </g:VerticalPanel>
     </g:HTMLPanel>
 

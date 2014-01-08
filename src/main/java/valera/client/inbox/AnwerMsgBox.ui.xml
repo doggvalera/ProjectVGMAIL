@@ -27,6 +27,7 @@
                 <g:RichTextArea styleName="{style.important}" ui:field="sendMailBox"></g:RichTextArea>
                 <g:Button styleName="{style.important}" ui:field="sendMail">Send Mail</g:Button>
                 <g:Button styleName="{style.important}" ui:field="close">Close</g:Button>
+
             </g:VerticalPanel>
         </g:HTMLPanel>
 

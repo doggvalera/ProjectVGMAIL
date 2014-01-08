@@ -35,6 +35,7 @@ public class RegestrationBox extends DialogBox implements HasText {
         service = GWT.create(ValeraService.class);
 
         this.registerNew.addClickHandler(new RegisterClickHandler());
+        this.closeBtn.addClickHandler(new CloseHandler());
     }
 
     @UiField
@@ -61,29 +62,21 @@ public class RegestrationBox extends DialogBox implements HasText {
     PasswordTextBox passwordRepeat;
     @UiField
     Label passwordLabelRepeat;
+    @UiField
+    Button closeBtn;
     //	this.registerNew.addClickHandler(new RegisterNewCkickHandler());
 
     private class RegisterClickHandler implements ClickHandler {
 
-        public void onClick(ClickEvent event) {
-            String name1 = name.getText();
-            String login1 = login.getText();
-            String surname1 = surname.getText();
-            String password1 = password.getText();
-            //service.getUserRegistration(login1, name1, surname1,password1,
-//					new BaseCallback<UserRegistration>() {
-//
-//						public void onSuccess(UserRegistration result) {
-//							name.setText(result.getLogin());
-//						}
-//					});
-//			name.setText("Work");
+                public void onClick(ClickEvent event) {
+                    String name1 = name.getText();
+                    String login1 = login.getText();
+                    String surname1 = surname.getText();
+                    String password1 = password.getText();
+
 
             UserRegistration reg = new UserRegistration(name1, login1, surname1, password1);
-            //   if(loginService.ifExist(reg)){
-            //      login.setText("User exist");
 
-//            }
             service.register(reg, new BaseCallback<Boolean>() {
                 @Override
                 public void onSuccess(Boolean userExist) {
@@ -97,5 +90,15 @@ public class RegestrationBox extends DialogBox implements HasText {
                 }
             });
         }
+    }
+    private class CloseHandler implements ClickHandler {
+
+        public void onClick(ClickEvent event) {
+            String name1 = name.getText();
+            String login1 = login.getText();
+            String surname1 = surname.getText();
+            String password1 = password.getText();
+            hide();
+}
     }
 }
