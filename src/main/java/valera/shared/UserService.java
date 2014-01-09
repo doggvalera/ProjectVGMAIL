@@ -7,7 +7,7 @@ import valera.server.domain.User;
 import valera.shared.model.CreateMail;
 import valera.shared.model.UserRegistration;
 
-@RemoteServiceRelativePath("valeraservice")
+@RemoteServiceRelativePath("userservice")
 @XsrfProtect
 public interface UserService extends RemoteService {
 

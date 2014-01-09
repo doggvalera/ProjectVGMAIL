@@ -4,6 +4,9 @@ import valera.shared.model.UserRegistration;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public class UserRepository {
@@ -17,17 +20,32 @@ public class UserRepository {
     public void save(User user) {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
+        user.setPassword(codePassword(user.getPassword()));
         em.persist(user);
         transaction.commit();
         // em.merge(user);
 
     }
 
+    public String codePassword(String password) {
+        String codedPassword = "";
+        try {
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            md5.update(password.getBytes(), 0, password.length());
+            codedPassword = new BigInteger(1, md5.digest()).toString(16);
+
+        } catch(NoSuchAlgorithmException ex) {
+
+        }
+        return codedPassword;
+    }
+
+
 
     public boolean loginEnterCheck(String loginfrombd, String password) {
         List<String> logins = em.createQuery("SELECT u.login FROM User u where :loginfrombd=u.login AND :password=u.password", String.class)
                 .setParameter("loginfrombd", loginfrombd)
-                .setParameter("password", password)
+                .setParameter("password", codePassword(password))
                 .getResultList();
         System.out.println(loginfrombd);
 

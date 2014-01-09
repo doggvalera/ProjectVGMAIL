@@ -41,6 +41,8 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
 
     @UiField
     PasswordTextBox passbox;
+    @UiField
+    Label error;
 
 
     RegestrationBox dialogBoxRegistration = new RegestrationBox();
@@ -57,44 +59,12 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
         service = GWT.create(UserService.class);
         loginEnter.addClickHandler(new LoginEnterClickHandler());
         button.addClickHandler(new RegisterNewCkickHandler());
-//		this.dialogBoxRegistration.add(vPanel);
-//		this.vPanel.add(name);
-//		this.vPanel.add(login);
-//		this.vPanel.add(surname);
-//		this.vPanel.add(register);
-//		
-//		this.vPanelReg.add(registerNew);
-//		this.register.addClickHandler(new RegisterClickHandler());
-//		this.registerNew.addClickHandler(new RegisterNewCkickHandler());
-//		dialogBoxRegistration.setText("Registration");
-//		dialogBoxRegistration.setAnimationEnabled(true);
-        //	RootPanel.get().add(loginEnter);
-
-        // Button search = Button.wrap(DOM.getElementById("search"));
-
+//
 
     }
 
 //
-//	private class RegisterClickHandler implements ClickHandler {
 //
-//		public void onClick(ClickEvent event) {
-//			String name1 = name.getText();
-//			String login1 = login.getText();
-//			String surname1 = surname.getText();
-//
-//			service.getUserRegistration(login1, name1, surname1,
-//					new BaseCallback<UserRegistration>() {
-//
-//						public void onSuccess(UserRegistration result) {
-//							name.setText(result.getLogin());
-//						}
-//					});
-//			name.setText("Work");
-//
-//		}
-//
-//	}
 
     private class RegisterNewCkickHandler implements ClickHandler {
 
@@ -113,13 +83,7 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
             String password = passbox.getText();
 
 
-//            service.loginEnter(login,password,new BaseCallback<Boolean>() {
-//                @Override
-//                public void onSuccess(Boolean userEnter) {
-//                    if ( userEnter==true) {  FlowControl.go(GmailMainUI.mainPanel);} else System.out.println("user not created");
-//
-//                }
-//            });
+
 
 
             service.loginEnter(login, password, new BaseCallback<Boolean>() {
@@ -133,7 +97,7 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
                             }
                         });
                         FlowControl.go(GmailMainUI.mainPanel);
-                    } else System.out.println("user not created");
+                    } else error.setText("Login or password incorrect");
 
                 }
             });
@@ -143,10 +107,6 @@ public class HomePage extends Composite implements ValueChangeHandler<String> {
 
     }
 
-    // private void showHomePage() {
-    // showToken("register");
-    // }
-    //
 
 
     private static HomePageUiBinder uiBinder = GWT

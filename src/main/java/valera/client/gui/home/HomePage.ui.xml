@@ -30,6 +30,11 @@
             height: 10px;
             background: #999999;
         }
+        .errorlbl{
+
+            color: red;
+
+        }
 
     </ui:style>
     <g:VerticalPanel addStyleNames="{style.navPanel1}">
@@ -39,6 +44,7 @@
             <br></br>
             Login:
             <br></br>
+            <g:Label styleName="{style.errorlbl}" ui:field="error"></g:Label>
             <g:TextBox styleName="{style.important}" ui:field="loginE"></g:TextBox>
             <br></br>
             Password:

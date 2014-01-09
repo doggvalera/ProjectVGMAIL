@@ -8,13 +8,13 @@
  
     <!-- Servlets -->
   <servlet>
-    <servlet-name>valeraservice</servlet-name>
+    <servlet-name>userservice</servlet-name>
     <servlet-class>valera.server.UserServiceImpl</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>valeraservice</servlet-name>
-    <url-pattern>/valeragmailmain/valeraservice</url-pattern>
+    <servlet-name>userservice</servlet-name>
+    <url-pattern>/valeragmailmain/userservice</url-pattern>
   </servlet-mapping>
 
     <servlet>
